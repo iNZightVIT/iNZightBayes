@@ -1,0 +1,20 @@
+Package: iNZightBayes
+Title: Bayesian Inference with 'iNZight'
+Version: 0.0.0.9000
+Authors@R: c(
+    person(given = "Tom", family = "Elliott", role = c("aut", "cre"),
+        email = "tom.elliott@auckland.ac.nz", comment = c(ORCID = "0000-0002-7815-6318"))
+    )
+Description: Provides functions for fitting a finite set of Bayesian models, for use by the 'iNZightPlots' package.
+License: GPL (>= 3)
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+LinkingTo:
+    Rcpp
+Imports:
+    Rcpp
+Suggests:
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
