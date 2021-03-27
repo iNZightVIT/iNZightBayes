@@ -1,12 +1,22 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
-//' Gibbs sampler for single numeric mean and variance
+//' Gibbs Sample for Single Mean and Variance
 //'
-//' Description and details
+//' Gibbs sampler to sample mean and variance of one numeric variable
 //'
-//' @param y vector of values
-//' @param steps number of steps
+//' @details
+//' Assumes conjugate Normal-Inverse-Gamma priors on mean and variance:
+//' \deqn{y \sim \mathrm{Normal}(\mu, \sigma^2)}
+//'
+//' @param y a vector of values
+//' @param steps number of iterations to run Gibbs sampler for
+//' @param burnin number of burn-in iterations to discard before proper steps
+//' @param thin thinning factor (default 1)
+//' @param mu.0 prior mean for mu (default 0)
+//' @param sigma2.0 prior variance for mu (default 1e6)
+//' @param alpha prior shape parameter for sigma2 (default 1e-3)
+//' @param beta prior scale parameter for sigma2 (default 1e-3)
 // [[Rcpp::export]]
 List gibbs_one_numeric_cpp (
     NumericVector y,
@@ -14,7 +24,7 @@ List gibbs_one_numeric_cpp (
     int burnin,
     int thin = 1,
     double mu_0 = 0.0,
-    double sigma2_0 = 1e6,
+     double sigma2_0 = 1e6,
     double alpha = 1e-3,
     double beta = 1e-3
 )

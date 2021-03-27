@@ -2,7 +2,7 @@
 % Please edit documentation in R/RcppExports.R
 \name{gibbs_one_numeric_cpp}
 \alias{gibbs_one_numeric_cpp}
-\title{Gibbs sampler for single numeric mean and variance}
+\title{Gibbs Sample for Single Mean and Variance}
 \usage{
 gibbs_one_numeric_cpp(
   y,
@@ -16,10 +16,26 @@ gibbs_one_numeric_cpp(
 )
 }
 \arguments{
-\item{y}{vector of values}
+\item{y}{a vector of values}
 
-\item{steps}{number of steps}
+\item{steps}{number of iterations to run Gibbs sampler for}
+
+\item{burnin}{number of burn-in iterations to discard before proper steps}
+
+\item{thin}{thinning factor (default 1)}
+
+\item{alpha}{prior shape parameter for sigma2 (default 1e-3)}
+
+\item{beta}{prior scale parameter for sigma2 (default 1e-3)}
+
+\item{mu.0}{prior mean for mu (default 0)}
+
+\item{sigma2.0}{prior variance for mu (default 1e6)}
 }
 \description{
-Description and details
+Gibbs sampler to sample mean and variance of one numeric variable
+}
+\details{
+Assumes conjugate Normal-Inverse-Gamma priors on mean and variance:
+\deqn{y \sim \mathrm{Normal}(\mu, \sigma^2)}
 }
