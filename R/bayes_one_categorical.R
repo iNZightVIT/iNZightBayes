@@ -12,21 +12,21 @@
 #' rdirichlet(10, c(1, 1, 1))
 #' }
 rdirichlet = function(n, alpha) {
-  
+
   if (any(alpha <= 0)) stop("all alpha must be > 0")
-  
+
   # Number of groups
-  k = length(alpha)  
-  
+  k = length(alpha)
+
   # Generate independent Gamma random variables with alpha shape
-  Y = matrix(rgamma(n * k, alpha), ncol = k, byrow = TRUE)
-  
+  Y = matrix(stats::rgamma(n * k, alpha), ncol = k, byrow = TRUE)
+
   # Compute normalisation for each random sample
-  S = apply(Y, 1, sum)  
-  
+  S = apply(Y, 1, sum)
+
   # Parameterise into Dirichlet random variables
   return(Y / S)
-  
+
 }
 
 #' @title Gibbs sampler to sample proportions of one categorical variable
@@ -44,16 +44,12 @@ rdirichlet = function(n, alpha) {
 #' x = c(100, 200, 300)
 #' mcmc = gibbs_one_categorical(x, 20000)
 #' }
-gibbs_one_categorical = function(x, 
+gibbs_one_categorical = function(x,
                                  steps,
                                  alpha = rep(1, length(x))) {
-  
+
   # Directly sample from Dirichlet posterior
   theta = rdirichlet(steps, x + alpha)
   return(list(theta = theta))
-  
+
 }
-
-
-
-
