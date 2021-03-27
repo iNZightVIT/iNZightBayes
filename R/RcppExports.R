@@ -21,7 +21,3 @@ gibbs_one_numeric_cpp <- function(y, steps, burnin, thin = 1L, mu_0 = 0.0, sigma
     .Call('_iNZightBayes_gibbs_one_numeric_cpp', PACKAGE = 'iNZightBayes', y, steps, burnin, thin, mu_0, sigma2_0, alpha, beta)
 }
 
-rcpp_hello_world <- function() {
-    .Call('_iNZightBayes_rcpp_hello_world', PACKAGE = 'iNZightBayes')
-}
-
