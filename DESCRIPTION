@@ -3,7 +3,9 @@ Title: Bayesian Inference with 'iNZight'
 Version: 0.0.0.9000
 Authors@R: c(
     person(given = "Tom", family = "Elliott", role = c("aut", "cre"),
-        email = "tom.elliott@auckland.ac.nz", comment = c(ORCID = "0000-0002-7815-6318"))
+        email = "tom.elliott@auckland.ac.nz", comment = c(ORCID = "0000-0002-7815-6318")),
+    person(given = "Matt", family = "Edwards", role = "aut",
+        email = "matt.edwards@auckland.ac.nz", comment = c(ORCID = ""))
     )
 Description: Provides functions for fitting a finite set of Bayesian models, for use by the 'iNZightPlots' package.
 License: GPL (>= 3)
