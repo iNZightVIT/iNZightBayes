@@ -13,8 +13,8 @@
 #' @param steps number of iterations to run Gibbs sampler for
 #' @param burnin number of burn-in iterations to discard before proper steps
 #' @param thin thinning factor (default 1)
-#' @param mu.0 prior mean for mu (default 0)
-#' @param sigma2.0 prior variance for mu (default 1e6)
+#' @param mu_0 prior mean for mu (default 0)
+#' @param sigma2_0 prior variance for mu (default 1e6)
 #' @param alpha prior shape parameter for sigma2 (default 1e-3)
 #' @param beta prior scale parameter for sigma2 (default 1e-3)
 gibbs_one_numeric_cpp <- function(y, steps, burnin, thin = 1L, mu_0 = 0.0, sigma2_0 = 1e6, alpha = 1e-3, beta = 1e-3) {

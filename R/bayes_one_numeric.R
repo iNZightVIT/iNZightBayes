@@ -36,7 +36,7 @@ gibbs_one_numeric = function(y,
 
   # Set good starting values
   mu[1] = mean(y)
-  sigma2[1] = var(y)
+  sigma2[1] = stats::var(y)
 
   #####
   # Run MCMC
@@ -59,7 +59,7 @@ gibbs_one_numeric = function(y,
     mu.n = sigma2.n * (mu.0 / sigma2.0 + sum(y) / sigma2[i])
 
     # Sample mu[i + 1] | sigma2[i] using Normal conjugate
-    mu[i + 1] = rnorm(1, mu.n, sqrt(sigma2.n))
+    mu[i + 1] = stats::rnorm(1, mu.n, sqrt(sigma2.n))
 
     #####
     # Step 2: Sample from full conditional of sigma2 | mu
@@ -70,7 +70,7 @@ gibbs_one_numeric = function(y,
     beta.n = beta + 0.5 * sum((y - mu[i + 1]) ^ 2)
 
     # Sample sigma2[i + 1] given mu[i + 1] using Inverse-Gamma conjugate
-    sigma2[i + 1] = 1 / rgamma(1, alpha.n, beta.n)
+    sigma2[i + 1] = 1 / stats::rgamma(1, alpha.n, beta.n)
 
     # cat("[", mu[i+1], ", ", sigma2[i+1], "], [", alpha.n, ", ", beta.n, "]\n", sep ="");
 

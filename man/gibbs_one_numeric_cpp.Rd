@@ -24,13 +24,13 @@ gibbs_one_numeric_cpp(
 
 \item{thin}{thinning factor (default 1)}
 
+\item{mu_0}{prior mean for mu (default 0)}
+
+\item{sigma2_0}{prior variance for mu (default 1e6)}
+
 \item{alpha}{prior shape parameter for sigma2 (default 1e-3)}
 
 \item{beta}{prior scale parameter for sigma2 (default 1e-3)}
-
-\item{mu.0}{prior mean for mu (default 0)}
-
-\item{sigma2.0}{prior variance for mu (default 1e6)}
 }
 \description{
 Gibbs sampler to sample mean and variance of one numeric variable
