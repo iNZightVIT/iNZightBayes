@@ -1,7 +1,7 @@
 R := R
 RCMD := $(R) --slave
 
-document:
+document: README.md
 	@$(RCMD) -e "devtools::document()"
 
 test:
@@ -20,6 +20,9 @@ crancheck: document
 
 install:
 	$(R) CMD INSTALL ./
+
+README.md: README.Rmd
+	$(RCMD) -e "rmarkdown::render('README.Rmd')" && rm README.html
 
 clean:
 	@rm -rf *.tar.gz *.Rcheck revdep
