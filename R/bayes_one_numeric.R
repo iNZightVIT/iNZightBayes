@@ -20,15 +20,15 @@
 #' y = rnorm(n, 10, sqrt(4))
 #' mcmc = gibbs_one_numeric(y, 20000, 5000)
 #' }
-gibbs_one_numeric = function(y,
-                             steps,
-                             burnin,
-                             thin = 1,
-                             mu.0 = 0,
-                             sigma2.0 = 1e6,
-                             alpha = 1e-3,
-                             beta = 1e-3,
-                             verbose = TRUE) {
+gibbs_one_numeric_R = function(y,
+                               steps,
+                               burnin,
+                               thin = 1,
+                               mu.0 = 0,
+                               sigma2.0 = 1e6,
+                               alpha = 1e-3,
+                               beta = 1e-3,
+                               verbose = TRUE) {
 
   # Create vectors to store posterior samples
   mu = sigma2 = rep(NA, steps + burnin)

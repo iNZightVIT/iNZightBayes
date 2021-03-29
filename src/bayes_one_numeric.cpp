@@ -18,15 +18,15 @@ using namespace Rcpp;
 //' @param alpha prior shape parameter for sigma2 (default 1e-3)
 //' @param beta prior scale parameter for sigma2 (default 1e-3)
 // [[Rcpp::export]]
-List gibbs_one_numeric_cpp (
+List gibbs_one_numeric (
     NumericVector y,
-    int steps,
-    int burnin,
+    int steps = 1000,
+    int burnin = 1000,
     int thin = 1,
     double mu_0 = 0.0,
-     double sigma2_0 = 1e6,
-    double alpha = 1e-3,
-    double beta = 1e-3
+     double sigma2_0 = 1.0e6,
+    double alpha = 1.0e-3,
+    double beta = 1.0e-3
 )
 {
     // Create vectors to store posterior samples
@@ -88,7 +88,19 @@ List gibbs_one_numeric_cpp (
         }
     }
 
-    List z = List::create ( _["mu"] = mu, _["sigma2"] = sigma2 );
+    DataFrame post = DataFrame::create (
+        _["mu"] = mu,
+        _["sigma2"] = sigma2
+    );
+    List z = List::create (
+        _["posterior"] = post,
+        _["mcmc_info"] = List::create (
+            _["thin"] = thin,
+            _["burnin"] = burnin,
+            _["iter"] = steps,
+            _["samples"] = Nkeep
+        )
+    );
     return z;
 }
 

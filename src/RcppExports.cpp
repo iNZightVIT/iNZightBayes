@@ -5,9 +5,9 @@
 
 using namespace Rcpp;
 
-// gibbs_one_numeric_cpp
-List gibbs_one_numeric_cpp(NumericVector y, int steps, int burnin, int thin, double mu_0, double sigma2_0, double alpha, double beta);
-RcppExport SEXP _iNZightBayes_gibbs_one_numeric_cpp(SEXP ySEXP, SEXP stepsSEXP, SEXP burninSEXP, SEXP thinSEXP, SEXP mu_0SEXP, SEXP sigma2_0SEXP, SEXP alphaSEXP, SEXP betaSEXP) {
+// gibbs_one_numeric
+List gibbs_one_numeric(NumericVector y, int steps, int burnin, int thin, double mu_0, double sigma2_0, double alpha, double beta);
+RcppExport SEXP _iNZightBayes_gibbs_one_numeric(SEXP ySEXP, SEXP stepsSEXP, SEXP burninSEXP, SEXP thinSEXP, SEXP mu_0SEXP, SEXP sigma2_0SEXP, SEXP alphaSEXP, SEXP betaSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -19,13 +19,13 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< double >::type sigma2_0(sigma2_0SEXP);
     Rcpp::traits::input_parameter< double >::type alpha(alphaSEXP);
     Rcpp::traits::input_parameter< double >::type beta(betaSEXP);
-    rcpp_result_gen = Rcpp::wrap(gibbs_one_numeric_cpp(y, steps, burnin, thin, mu_0, sigma2_0, alpha, beta));
+    rcpp_result_gen = Rcpp::wrap(gibbs_one_numeric(y, steps, burnin, thin, mu_0, sigma2_0, alpha, beta));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_iNZightBayes_gibbs_one_numeric_cpp", (DL_FUNC) &_iNZightBayes_gibbs_one_numeric_cpp, 8},
+    {"_iNZightBayes_gibbs_one_numeric", (DL_FUNC) &_iNZightBayes_gibbs_one_numeric, 8},
     {NULL, NULL, 0}
 };
 

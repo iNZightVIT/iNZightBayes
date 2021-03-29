@@ -17,7 +17,7 @@
 #' @param sigma2_0 prior variance for mu (default 1e6)
 #' @param alpha prior shape parameter for sigma2 (default 1e-3)
 #' @param beta prior scale parameter for sigma2 (default 1e-3)
-gibbs_one_numeric_cpp <- function(y, steps, burnin, thin = 1L, mu_0 = 0.0, sigma2_0 = 1e6, alpha = 1e-3, beta = 1e-3) {
-    .Call('_iNZightBayes_gibbs_one_numeric_cpp', PACKAGE = 'iNZightBayes', y, steps, burnin, thin, mu_0, sigma2_0, alpha, beta)
+gibbs_one_numeric <- function(y, steps = 1000L, burnin = 1000L, thin = 1L, mu_0 = 0.0, sigma2_0 = 1.0e6, alpha = 1.0e-3, beta = 1.0e-3) {
+    .Call('_iNZightBayes_gibbs_one_numeric', PACKAGE = 'iNZightBayes', y, steps, burnin, thin, mu_0, sigma2_0, alpha, beta)
 }
 

@@ -36,6 +36,11 @@ And the development version from [GitHub](https://github.com/) with:
 # install.packages("devtools")
 devtools::install_github("iNZightVIT/iNZightBayes")
 ```
+
 ## Example
 
-... coming soon ...
+``` r
+post <- estimate_mean(~Sepal.Width, data = iris)
+summary(post)
+plot(post)
+```

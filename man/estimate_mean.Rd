@@ -2,12 +2,24 @@
 % Please edit documentation in R/estimate_mean.R
 \name{estimate_mean}
 \alias{estimate_mean}
+\alias{estimate_mean.default}
+\alias{estimate_mean.formula}
 \title{Estimate the sample mean}
 \usage{
-estimate_mean(x)
+estimate_mean(x, y, ...)
+
+\method{estimate_mean}{default}(x, y, ...)
+
+\method{estimate_mean}{formula}(x, y, data, ...)
 }
 \arguments{
-\item{x}{a vector of values}
+\item{x}{a vector of values or a formula}
+
+\item{y}{optional, a grouping vector}
+
+\item{...}{additional arguments passed to child functions}
+
+\item{data}{optional location to find formula values}
 }
 \value{
 a posterior distribution for the mean
@@ -15,6 +27,18 @@ a posterior distribution for the mean
 \description{
 Estimate the sample mean
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{default}: Default method
+
+\item \code{formula}: Method for a formula
+}}
+
 \examples{
-estimate_mean(rnorm(100, 50, 5))
+post <- estimate_mean(rnorm(100, 50, 5))
+summary(post)
+plot(post)
+}
+\seealso{
+\link{inzposterior}
 }
