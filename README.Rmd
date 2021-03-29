@@ -39,7 +39,7 @@ devtools::install_github("iNZightVIT/iNZightBayes")
 
 ## Example
 
-```{r example}
+```{r example,fig.height=4,fig.width=8}
 library(iNZightBayes)
 
 post <- estimate_mean(~Sepal.Width, data = iris)

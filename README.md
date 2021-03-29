@@ -38,15 +38,15 @@ summary(post)
 #> 1. Empirical mean and standard deviation for each variable,
 #>    plus standard error of the mean:
 #> 
-#>          Mean      SD Naive SE Time-series SE
-#> mu     3.0579 0.03605 0.001140       0.001140
-#> sigma2 0.1934 0.02299 0.000727       0.000727
+#>          Mean      SD  Naive SE Time-series SE
+#> mu     3.0591 0.03549 0.0011224      0.0011224
+#> sigma2 0.1916 0.02222 0.0007028      0.0007529
 #> 
 #> 2. Quantiles for each variable:
 #> 
-#>         2.5%    25%    50%    75%  97.5%
-#> mu     2.988 3.0329 3.0583 3.0825 3.1253
-#> sigma2 0.153 0.1773 0.1909 0.2074 0.2427
+#>         2.5%    25%    50%    75% 97.5%
+#> mu     2.988 3.0349 3.0595 3.0820 3.133
+#> sigma2 0.152 0.1765 0.1896 0.2057 0.239
 plot(post)
 ```
 
