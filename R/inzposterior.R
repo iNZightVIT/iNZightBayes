@@ -56,7 +56,7 @@ summary.inzexact <- function(object, ...) {
 #' @describeIn inzposterior Plot method for iNZight posterior objects
 #' @export
 print.inzexactsummary <- function(x, ...) {
-    print.default(x, digits = 3)
+    print(unclass(x), digits = 3)
 }
 
 #' @describeIn inzposterior Plot method for iNZight posterior objects
@@ -79,6 +79,36 @@ plot.inzposterior <- function(x, y, ...) {
     patchwork::wrap_plots(plot_list)
 }
 
+#' @describeIn inzposterior Plot method for iNZight exact-posterior objects
+#' @export
+#' @param x an object of class `inzexact`
+#' @param y optional, the parameter to plot. All shown if ommitted
+#' @md
+plot.inzexact <- function(x, y, ...) {
+    # figure out x-limits
+    samples <- NULL
+    sampler <- function(samples) if (is.null(samples)) x$sampler(1e4) else samples
+
+    xlim <- if (is.null(x$quantiles)) {
+        apply(as.matrix(sampler(samples)), 2L, stats::quantile, probs = c(0.001, 0.999))
+    } else x$quantiles(c(0.001, 0.999))
+    if (is.numeric(xlim)) xlim <- cbind(xlim)
+
+    plot_list <- lapply(seq_along(x$parameters),
+        function(i) {
+            xx <- seq(xlim[1L, i], xlim[2L, i], length.out = 1001)
+            yy <- x$marginal(i, xx)
+            df <- data.frame(x = xx, y = yy)
+            ggplot2::ggplot(df, ggplot2::aes(xx, yy)) +
+                ggplot2::geom_path(size = 1) +
+                ggplot2::xlab(names(x$parameters)[i]) +
+                ggplot2::ylab("Density")
+        }
+    )
+
+    patchwork::wrap_plots(plot_list)
+}
+
 #' @describeIn inzposterior Returns the mean of the estimated parameters
 #' @export
 #' @param x an object of class `inzposterior`
@@ -86,6 +116,7 @@ plot.inzposterior <- function(x, y, ...) {
 mean.inzposterior <- function(x, ...) {
     colMeans(x$posterior)
 }
+
 
 #' Calculate statistics
 #'

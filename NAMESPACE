@@ -3,6 +3,7 @@
 S3method(estimate_mean,default)
 S3method(estimate_mean,formula)
 S3method(mean,inzposterior)
+S3method(plot,inzexact)
 S3method(plot,inzposterior)
 S3method(print,inzexactsummary)
 S3method(print,inzposterior)

@@ -46,3 +46,12 @@ post <- estimate_mean(~Sepal.Width, data = iris)
 summary(post)
 plot(post)
 ```
+
+
+In some cases, the posterior can be calculated exactly.
+
+```{r exact,fig.height=4,fig.width=8}
+post <- estimate_proportions(c(20, 50, 30), alpha = c(10, 10, 10))
+summary(post)
+plot(post)
+```

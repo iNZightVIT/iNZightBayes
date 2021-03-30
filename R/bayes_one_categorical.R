@@ -77,7 +77,8 @@ estimate_proportions = function(x, alpha = rep(1, length(x))) {
     structure(
         list(
             density = function(x) DirichletReg::ddirichlet(x, theta),
-            parameters = list(alpha = x + alpha),
+            marginal = function(par, x) stats::dbeta(x, theta[par], sum(theta) - theta[par]),
+            parameters = theta,
             sampler = function(n)
                 structure(rdirichlet(n, theta),
                     .Dimnames = list(NULL, parnames)
