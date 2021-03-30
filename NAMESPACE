@@ -2,9 +2,11 @@
 
 S3method(estimate_mean,default)
 S3method(estimate_mean,formula)
+S3method(mean,inzposterior)
 S3method(plot,inzposterior)
 S3method(print,inzposterior)
 S3method(summary,inzposterior)
+export(calc)
 export(estimate_mean)
 export(gibbs_one_categorical)
 export(gibbs_one_numeric_R)
