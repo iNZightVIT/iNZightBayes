@@ -23,6 +23,42 @@ summary.inzposterior <- function(object, ...) {
     summary(object$posterior)
 }
 
+#' @describeIn inzposterior Summary method for iNZight posterior objects
+#' @export
+#' @param object an object of class `inzposterior`
+#' @md
+summary.inzexact <- function(object, ...) {
+    samples <- NULL
+    sampler <- function(samples) if (is.null(samples)) object$sampler(1e4) else samples
+
+    mean <- if (is.null(object$mean)) {
+        colMeans(as.matrix(sampler(samples)))
+    } else object$mean
+
+    var <- if (is.null(object$variance)) {
+        apply(as.matrix(sampler(samples)), 2L, var)
+    } else object$variance
+
+    quantiles <- if (is.null(object$quantiles)) {
+        apply(as.matrix(sampler(samples)), 2L, stats::quantile, probs = c(0.025, 0.975))
+    } else object$quantiles(c(0.025, 0.975))
+
+    structure(
+        cbind(
+            mean = mean,
+            var = var,
+            t(quantiles)
+        ),
+        class = "inzexactsummary"
+    )
+}
+
+#' @describeIn inzposterior Plot method for iNZight posterior objects
+#' @export
+print.inzexactsummary <- function(x, ...) {
+    print.default(x, digits = 3)
+}
+
 #' @describeIn inzposterior Plot method for iNZight posterior objects
 #' @export
 #' @param x an object of class `inzposterior`

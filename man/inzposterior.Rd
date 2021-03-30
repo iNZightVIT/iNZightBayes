@@ -4,6 +4,8 @@
 \alias{inzposterior}
 \alias{print.inzposterior}
 \alias{summary.inzposterior}
+\alias{summary.inzexact}
+\alias{print.inzexactsummary}
 \alias{plot.inzposterior}
 \alias{mean.inzposterior}
 \title{iNZight Posterior Object}
@@ -11,6 +13,10 @@
 \method{print}{inzposterior}(x, ...)
 
 \method{summary}{inzposterior}(object, ...)
+
+\method{summary}{inzexact}(object, ...)
+
+\method{print}{inzexactsummary}(x, ...)
 
 \method{plot}{inzposterior}(x, y, ...)
 
@@ -34,6 +40,10 @@ methods for obtaining posterior summaries and samples.
 \item \code{print.inzposterior}: Print method for iNZight posterior obejcts
 
 \item \code{summary.inzposterior}: Summary method for iNZight posterior objects
+
+\item \code{summary.inzexact}: Summary method for iNZight posterior objects
+
+\item \code{print.inzexactsummary}: Plot method for iNZight posterior objects
 
 \item \code{plot.inzposterior}: Plot method for iNZight posterior objects
 
