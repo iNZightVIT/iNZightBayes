@@ -61,7 +61,7 @@ There's also linear regression:
 ```{r regression, fig.height=4,fig.width=8}
 # temporary syntax:
 y <- iris$Sepal.Length
-x <- cbind(iris$Sepal.Width, iris$Sepal.Width^2)
+x <- cbind(iris$Sepal.Width)
 post <- gibbs_lm(y, x, 100)
 
 par(mfrow = c(1, 2))
