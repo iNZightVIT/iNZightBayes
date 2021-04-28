@@ -11,6 +11,7 @@ using namespace Rcpp;
 //' @param y a vector of response values
 //' @param x a matrix of explanatory variables
 //' @param steps number of samples to obtain
+//' @export
 // [[Rcpp::export]]
 List gibbs_lm (
     NumericVector y,

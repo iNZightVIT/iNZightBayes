@@ -10,6 +10,8 @@ gibbs_lm(y, x, steps = 1000L)
 \item{y}{a vector of response values}
 
 \item{x}{a matrix of explanatory variables}
+
+\item{steps}{number of samples to obtain}
 }
 \description{
 Gibbs sampler for linear regression

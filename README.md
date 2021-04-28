@@ -45,14 +45,14 @@ summary(post)
 #>    plus standard error of the mean:
 #> 
 #>          Mean      SD  Naive SE Time-series SE
-#> mu     3.0576 0.03664 0.0011587      0.0012404
-#> sigma2 0.1923 0.02203 0.0006968      0.0006968
+#> mu     3.0578 0.03588 0.0011346      0.0011346
+#> sigma2 0.1936 0.02311 0.0007307      0.0006915
 #> 
 #> 2. Quantiles for each variable:
 #> 
-#>          2.5%    25%    50%    75% 97.5%
-#> mu     2.9857 3.0340 3.0581 3.0833 3.128
-#> sigma2 0.1548 0.1769 0.1905 0.2057 0.242
+#>          2.5%    25%    50%    75%  97.5%
+#> mu     2.9867 3.0342 3.0597 3.0832 3.1241
+#> sigma2 0.1535 0.1782 0.1921 0.2074 0.2453
 plot(post)
 ```
 
@@ -64,10 +64,30 @@ In some cases, the posterior can be calculated exactly.
 post <- estimate_proportions(c(20, 50, 30), alpha = c(10, 10, 10))
 summary(post)
 #>          mean       var  2.5% 97.5%
-#> theta_1 0.231 -4.52e-05 0.163 0.306
-#> theta_2 0.462 -3.16e-05 0.379 0.548
-#> theta_3 0.308 -4.07e-05 0.234 0.389
+#> theta_1 0.231 -4.52e-05 0.161 0.306
+#> theta_2 0.462 -3.16e-05 0.377 0.546
+#> theta_3 0.308 -4.07e-05 0.233 0.390
 plot(post)
 ```
 
 <img src="man/figures/README-exact-1.png" width="100%" />
+
+There’s also linear regression:
+
+``` r
+# temporary syntax:
+y <- iris$Sepal.Length
+x <- cbind(iris$Sepal.Width, iris$Sepal.Width^2)
+post <- gibbs_lm(y, x, 100)
+
+par(mfrow = c(1, 2))
+plot(post$posterior$beta)
+plot(x[,1], y)
+apply(post$posterior$beta, 1,
+  function(b)
+    lines(x[,1], cbind(1, x) %*% b, col = "#00990030"))
+```
+
+<img src="man/figures/README-regression-1.png" width="100%" />
+
+    #> NULL

@@ -55,3 +55,19 @@ post <- estimate_proportions(c(20, 50, 30), alpha = c(10, 10, 10))
 summary(post)
 plot(post)
 ```
+
+
+There's also linear regression:
+```{r regression, fig.height=4,fig.width=8}
+# temporary syntax:
+y <- iris$Sepal.Length
+x <- cbind(iris$Sepal.Width, iris$Sepal.Width^2)
+post <- gibbs_lm(y, x, 100)
+
+par(mfrow = c(1, 2))
+plot(post$posterior$beta)
+plot(x[,1], y)
+apply(post$posterior$beta, 1,
+  function(b)
+    lines(x[,1], cbind(1, x) %*% b, col = "#00990030"))
+```

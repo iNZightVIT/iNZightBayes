@@ -7,8 +7,10 @@
 #'
 #' @param y a vector of response values
 #' @param x a matrix of explanatory variables
+#' @param steps number of samples to obtain
+#' @export
 gibbs_lm <- function(y, x, steps = 1000L) {
-    .Call('_iNZightBayes_gibbs_lm', PACKAGE = 'iNZightBayes', y, x, steps)
+    .Call(`_iNZightBayes_gibbs_lm`, y, x, steps)
 }
 
 #' Gibbs Sample for Single Mean and Variance
@@ -28,6 +30,6 @@ gibbs_lm <- function(y, x, steps = 1000L) {
 #' @param alpha prior shape parameter for sigma2 (default 1e-3)
 #' @param beta prior scale parameter for sigma2 (default 1e-3)
 gibbs_one_numeric <- function(y, steps = 1000L, burnin = 1000L, thin = 1L, mu_0 = 0.0, sigma2_0 = 1.0e6, alpha = 1.0e-3, beta = 1.0e-3) {
-    .Call('_iNZightBayes_gibbs_one_numeric', PACKAGE = 'iNZightBayes', y, steps, burnin, thin, mu_0, sigma2_0, alpha, beta)
+    .Call(`_iNZightBayes_gibbs_one_numeric`, y, steps, burnin, thin, mu_0, sigma2_0, alpha, beta)
 }
 
