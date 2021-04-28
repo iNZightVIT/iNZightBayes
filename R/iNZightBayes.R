@@ -5,7 +5,7 @@
 #' @docType package
 #' @author Tom Elliott <tom.elliott@auckland.ac.nz>
 #' @import Rcpp
-#' @importFrom Rcpp evalCpp
-#' @useDynLib iNZightBayes
+#' @importFrom Rcpp evalCpp sourceCpp
+#' @useDynLib iNZightBayes, .registration = TRUE
 #' @name iNZightBayes
 NULL

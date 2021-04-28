@@ -24,7 +24,7 @@ List gibbs_one_numeric (
     int burnin = 1000,
     int thin = 1,
     double mu_0 = 0.0,
-     double sigma2_0 = 1.0e6,
+    double sigma2_0 = 1.0e6,
     double alpha = 1.0e-3,
     double beta = 1.0e-3
 )
