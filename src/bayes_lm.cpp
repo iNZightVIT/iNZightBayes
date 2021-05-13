@@ -57,7 +57,7 @@ List gibbs_lm (
     beta.col (0) = beta.col (0) - beta.cols (1, k-1) * xm;
 
     List z = List::create (
-        _["posterior"] = List::create (
+        _["posterior"] = DataFrame::create (
             _["beta"] = beta,
             _["sigma2"] = sigma2
         ),

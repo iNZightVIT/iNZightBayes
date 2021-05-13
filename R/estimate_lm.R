@@ -63,3 +63,59 @@ gibbs_lm_R = function(y,
               sigma2 = sigma2))
 
 }
+
+#' Estimate a linear regression model
+#'
+#' @param y a vector of response values or a formula
+#' @param ... additional arguments passed to child functions
+#' @return a posterior distribution for the regression parameters
+#' @md
+#' @export
+#' @seealso [inzposterior]
+#' @examples
+#' post <- estimate_lm(Petal.Length ~ Petal.Width, data = iris)
+#' summary(post)
+#' plot(post)
+estimate_lm <- function(y, ...) {
+    UseMethod("estimate_lm", y)
+}
+
+#' @describeIn estimate_lm Default method
+#' @param x predictor(s), a matrix
+#' @export
+estimate_lm.default <- function(y, x, data, ...) {
+
+    samples <- gibbs_lm(y, x, steps = 1000)
+
+    structure(
+        list(
+            posterior = coda::mcmc(samples$posterior,
+                start = samples$mcmc_info$burnin + 1L,
+                end = samples$mcmc_info$burnin + samples$mcmc_info$iter,
+                thin = samples$mcmc_info$thin
+            )
+        ),
+        class = "inzposterior"
+    )
+}
+
+#' @describeIn estimate_lm Method for a formula
+#' @param data a data.frame containing the data
+#' @export
+estimate_lm.formula <- function(y, data, ...) {
+    data <- stats::model.frame(y, data)
+    vt <- ifelse(sapply(data, is.numeric), "num", "cat")
+    if (length(vt) == 1L) {
+        if (vt[1L] == "cat") stop("Variable must be numeric")
+        x <- data[, 1L]
+        y <- NULL
+    } else if (length(vt) == 2L) {
+        if (!all(c("num", "cat") %in% vt))
+            stop("Need to specify a numeric and a factor variable")
+        x <- data[, vt == "num"]
+        y <- data[, vt == "cat"]
+    } else {
+        stop("Cannot handle formula", x)
+    }
+    estimate_mean.default(x, y, ...)
+}
