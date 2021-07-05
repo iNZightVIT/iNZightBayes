@@ -104,18 +104,13 @@ estimate_lm.default <- function(y, x, data, ...) {
 #' @export
 estimate_lm.formula <- function(y, data, ...) {
     data <- stats::model.frame(y, data)
-    vt <- ifelse(sapply(data, is.numeric), "num", "cat")
-    if (length(vt) == 1L) {
-        if (vt[1L] == "cat") stop("Variable must be numeric")
-        x <- data[, 1L]
-        y <- NULL
-    } else if (length(vt) == 2L) {
-        if (!all(c("num", "cat") %in% vt))
-            stop("Need to specify a numeric and a factor variable")
-        x <- data[, vt == "num"]
-        y <- data[, vt == "cat"]
-    } else {
-        stop("Cannot handle formula", x)
+
+    if (!all(sapply(data, is.numeric))) {
+        stop("Both variables must be numeric")
     }
-    estimate_mean.default(x, y, ...)
+
+    x <- as.matrix(data[, -1, drop = FALSE])
+    y <- as.double(data[, 1])
+
+    gibbs_lm(y, x)
 }
