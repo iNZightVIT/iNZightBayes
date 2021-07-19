@@ -33,7 +33,8 @@ estimate_mean.default <- function(x, y, ...) {
                 start = samples$mcmc_info$burnin + 1L,
                 end = samples$mcmc_info$burnin + samples$mcmc_info$iter,
                 thin = samples$mcmc_info$thin
-            )
+            ),
+            parameters = c("mu", "sigma2")
         ),
         class = "inzposterior"
     )

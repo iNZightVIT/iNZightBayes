@@ -87,13 +87,18 @@ estimate_lm.default <- function(y, x, data, ...) {
 
     samples <- gibbs_lm(y, x, steps = 1000)
 
+    cn <- colnames(samples$posterior)
+    cnb <- grepl("beta", cn)
+    colnames(samples$posterior)[cnb] <- paste0(gsub("\\.", "[", cn[cnb]), "]")
+
     structure(
         list(
             posterior = coda::mcmc(samples$posterior,
                 start = samples$mcmc_info$burnin + 1L,
                 end = samples$mcmc_info$burnin + samples$mcmc_info$iter,
                 thin = samples$mcmc_info$thin
-            )
+            ),
+            parameters = c("beta[i]", "sigma2")
         ),
         class = "inzposterior"
     )
@@ -112,5 +117,5 @@ estimate_lm.formula <- function(y, data, ...) {
     x <- as.matrix(data[, -1, drop = FALSE])
     y <- as.double(data[, 1])
 
-    gibbs_lm(y, x)
+    estimate_lm(y, x, ...)
 }

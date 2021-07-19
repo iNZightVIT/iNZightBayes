@@ -65,18 +65,38 @@ print.inzexactsummary <- function(x, ...) {
 #' @param y optional, the parameter to plot. All shown if ommitted
 #' @md
 plot.inzposterior <- function(x, y, ...) {
-    p <- tidybayes::spread_draws(x$posterior,
-        !!rlang::sym("mu"), !!rlang::sym("sigma2"))
-    if (missing(y)) y <- c("mu", "sigma2")
+
+    # expr <- "tidybayes::spread_draws(x$posterior, %s)"
+    # expr <- sprintf(expr, paste(x$parameters, collapse = ", "))
+    # p <- eval(parse(text = expr))
+
+    if (missing(y)) y <- x$parameters
 
     plot_list <- lapply(y,
         function(yvar) {
-            ggplot2::ggplot(p, ggplot2::aes_string(x = yvar)) +
-                tidybayes::stat_halfeye()
+            p <- eval(parse(
+                text = sprintf("tidybayes::spread_draws(x$posterior, %s)", yvar)
+            ))
+
+            aes <- ggplot2::aes_string(x = yvar)
+
+            if (grepl("\\[", yvar)) {
+                # colour by the index
+                cvar <- gsub(".+\\[|\\]", "", yvar)
+                yvar <- gsub("\\[.+", "", yvar)
+                p[[cvar]] <- as.factor(p[[cvar]])
+                aes <- ggplot2::aes_string(
+                    x = yvar,
+                    y = cvar
+                )
+            }
+
+            ggplot2::ggplot(p, aes) +
+                tidybayes::stat_pointinterval()
         }
     )
 
-    patchwork::wrap_plots(plot_list)
+    patchwork::wrap_plots(plot_list, ncol = 1)
 }
 
 #' @describeIn inzposterior Plot method for iNZight exact-posterior objects

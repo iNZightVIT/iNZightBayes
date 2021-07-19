@@ -84,7 +84,8 @@ estimate_proportions = function(x, alpha = rep(1, length(x))) {
                     .Dimnames = list(NULL, parnames)
                 ),
             mean = theta / sum(theta),
-            variance = (theta - sum(theta)) / (sum(theta)^2 * (sum(theta) + 1))
+            variance = (theta - sum(theta)) / (sum(theta)^2 * (sum(theta) + 1)),
+            parameters = "theta[i]"
         ),
         class = c("inzexact", "inzposterior")
     )
