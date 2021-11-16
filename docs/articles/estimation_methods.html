@@ -85,11 +85,31 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">iNZightBayes</span><span class="op">)</span></code></pre></div>
 <p>The ‘iNZightBayes’ package uses simple Bayesian estimation methods to obtain summaries for some common problems, such as a sample mean or proportion, ANOVA (multiple means), and linear regression.</p>
+<div id="grand-mean-of-numeric-variable" class="section level1">
+<h1 class="hasAnchor">
+<a href="#grand-mean-of-numeric-variable" class="anchor"></a>Grand mean of numeric variable</h1>
+<p>Here we are calculating the mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span> of a single numeric variable <span class="math inline">\(y\)</span> with length <span class="math inline">\(n\)</span>, using a Gibbs sampler. The model is <span class="math display">\[p(\mu,\sigma^2|y) \propto p(y|\mu,\sigma^2) p(\mu) p(\sigma^2)\]</span> where the prior on <span class="math inline">\(\mu\)</span> is Normal with mean <span class="math inline">\(\mu_0\)</span> and variance <span class="math inline">\(\sigma_0^2\)</span>, and the prior on <span class="math inline">\(\sigma^2\)</span> is Inverse-Gamma with parameters <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>. The likelihood for <span class="math inline">\(y\)</span> is Normal with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>.</p>
+<p>Since these are conjugate, the full conditionals needed for Gibbs sampling are <span class="math display">\[p(\mu^{(i+1)}|\sigma^2, \ldots) = \ldots\]</span></p>
+</div>
+<div id="group-means-of-a-numeric-variable" class="section level1">
+<h1 class="hasAnchor">
+<a href="#group-means-of-a-numeric-variable" class="anchor"></a>Group means of a numeric variable</h1>
+</div>
+<div id="proportions-of-a-categorical-variable" class="section level1">
+<h1 class="hasAnchor">
+<a href="#proportions-of-a-categorical-variable" class="anchor"></a>Proportions of a categorical variable</h1>
+</div>
+<div id="linear-regression" class="section level1">
+<h1 class="hasAnchor">
+<a href="#linear-regression" class="anchor"></a>Linear regression</h1>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-      </div>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
+</div>
 
 </div>
 

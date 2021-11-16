@@ -19,3 +19,18 @@ library(iNZightBayes)
 ```
 
 The 'iNZightBayes' package uses simple Bayesian estimation methods to obtain summaries for some common problems, such as a sample mean or proportion, ANOVA (multiple means), and linear regression.
+
+# Grand mean of numeric variable
+
+Here we are calculating the mean $\mu$ and variance $\sigma^2$ of a single numeric variable $y$ with length $n$, using a Gibbs sampler. The model is
+$$p(\mu,\sigma^2|y) \propto p(y|\mu,\sigma^2) p(\mu) p(\sigma^2)$$
+where the prior on $\mu$ is Normal with mean $\mu_0$ and variance $\sigma_0^2$, and the prior on $\sigma^2$ is Inverse-Gamma with parameters $\alpha$ and $\beta$. The likelihood for $y$ is Normal with mean $\mu$ and variance $\sigma^2$.
+
+Since these are conjugate, the full conditionals needed for Gibbs sampling are
+$$p(\mu^{(i+1)}|\sigma^2, \ldots) = \ldots$$
+
+# Group means of a numeric variable
+
+# Proportions of a categorical variable
+
+# Linear regression
