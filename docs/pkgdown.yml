@@ -3,5 +3,8 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   estimation_methods: estimation_methods.html
-last_built: 2021-11-16T00:43Z
+last_built: 2021-11-16T00:49Z
+urls:
+  reference: https://inzightvit.github.io/iNZightBayes/reference
+  article: https://inzightvit.github.io/iNZightBayes/articles
 

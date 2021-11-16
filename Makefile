@@ -26,3 +26,6 @@ README.md: README.Rmd
 
 clean:
 	@rm -rf *.tar.gz *.Rcheck revdep
+
+pkgdown:
+	@$(RCMD) -e "pkgdown::build_site()"
