@@ -29,7 +29,7 @@ gibbs_lm <- function(y, x, steps = 1000L) {
 #' @param sigma2_0 prior variance for mu (default 1e6)
 #' @param alpha prior shape parameter for sigma2 (default 1e-3)
 #' @param beta prior scale parameter for sigma2 (default 1e-3)
-gibbs_one_numeric <- function(y, steps = 1000L, burnin = 1000L, thin = 1L, mu_0 = 0.0, sigma2_0 = 1.0e6, alpha = 1.0e-3, beta = 1.0e-3) {
-    .Call(`_iNZightBayes_gibbs_one_numeric`, y, steps, burnin, thin, mu_0, sigma2_0, alpha, beta)
+gibbs_mean <- function(y, steps = 1000L, burnin = 1000L, thin = 1L, mu_0 = 0.0, sigma2_0 = 1.0e6, alpha = 1.0e-3, beta = 1.0e-3) {
+    .Call(`_iNZightBayes_gibbs_mean`, y, steps, burnin, thin, mu_0, sigma2_0, alpha, beta)
 }
 

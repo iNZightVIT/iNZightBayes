@@ -70,17 +70,3 @@ List gibbs_lm (
     );
     return z;
 }
-
-
-/*
-Benchmark:
-
-y <- iris$Sepal.Length
-x <- poly(iris$Sepal.Width, 3)
-res <- microbenchmark::microbenchmark(
-    gibbs_lm(y, x, 10000),
-    gibbs_lm_R(y, x, 10000),
-    times = 20
-)
-
-*/

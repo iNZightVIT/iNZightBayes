@@ -18,7 +18,7 @@ using namespace Rcpp;
 //' @param alpha prior shape parameter for sigma2 (default 1e-3)
 //' @param beta prior scale parameter for sigma2 (default 1e-3)
 // [[Rcpp::export]]
-List gibbs_one_numeric (
+List gibbs_mean (
     NumericVector y,
     int steps = 1000,
     int burnin = 1000,
@@ -103,15 +103,3 @@ List gibbs_one_numeric (
     );
     return z;
 }
-
-/*
-Benchmark:
-
-y <- rnorm(1000, 10, sqrt(4))
-res <- microbenchmark::microbenchmark(
-    gibbs_one_numeric(y, 20000, 5000, thin = 20, verbose = FALSE),
-    gibbs_one_numeric_cpp(y, 20000, 5000, thin = 20),
-    times = 20
-)
-
-*/

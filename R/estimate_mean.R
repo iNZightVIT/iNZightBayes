@@ -22,9 +22,9 @@ estimate_mean.default <- function(x, y, ...) {
     onesample <- (missing(y) || is.null(y))
 
     if (onesample) {
-        samples <- gibbs_one_numeric(x, ...)
+        samples <- gibbs_mean(x, ...)
     } else {
-        stop("Not implemented yet")
+        samples <- gibbs_anova(x, y, ...)
     }
 
     structure(

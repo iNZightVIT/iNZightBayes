@@ -1,0 +1,21 @@
+---
+title: "Estimation Methods"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Estimation Methods}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(iNZightBayes)
+```
+
+The 'iNZightBayes' package uses simple Bayesian estimation methods to obtain summaries for some common problems, such as a sample mean or proportion, ANOVA (multiple means), and linear regression.
