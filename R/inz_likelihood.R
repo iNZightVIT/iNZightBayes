@@ -29,10 +29,10 @@
 #' @export
 #'
 #' @examples
-#' # Single variable case
+#' # Single variable
 #' inz_lbinom(surf_data, Gender)
 #' 
-#' # Two-variable case
+#' # Two variables (grouped data)
 #' inz_lbinom(surf_data, Gender, Qualification)
 inz_lbinom <- function(data, primary, secondary=NULL) {
   
@@ -119,10 +119,10 @@ inz_lbinom <- function(data, primary, secondary=NULL) {
 #' @export
 #'
 #' @examples
-#' # Single variable case
+#' # Single variable
 #' inz_lmulti(surf_data, Qualification)
 #' 
-#' # Two-variable case
+#' # Two variables (grouped data)
 #' inz_lmulti(surf_data, Qualification, Gender)
 #' inz_lmulti(surf_data, Qualification, Ethnicity)
 inz_lmulti <- function(data, primary, secondary=NULL) {
@@ -197,7 +197,7 @@ inz_lmulti <- function(data, primary, secondary=NULL) {
 #' 
 #' \strong{Two variables - numeric and categorical:} Groups the numeric variable 
 #' by the categorical variable and computes summary statistics for each group. 
-#' The function automatically identifies the variable of which is numeric and uses it
+#' The function automatically identifies the variable which is numeric and uses it
 #' as the \code{primary} variable regardless of the order in which the variables 
 #' are inputted.
 #' 
@@ -237,14 +237,14 @@ inz_lmulti <- function(data, primary, secondary=NULL) {
 #' @export
 #'
 #' @examples
-#' # Single variable case
+#' # Single variable
 #' inz_lnorm(surf_data, Hours)
 #' 
-#' # Numeric and Categorical case (grouped data)
+#' # Numeric and Categorical (grouped data)
 #' inz_lnorm(surf_data, Income, Qualification)
 #' inz_lnorm(surf_data, Qualification, Income) # gives the same output
 #' 
-#' # Numeric and Numeric case (regression)
+#' # Numeric and Numeric (regression)
 #' inz_lnorm(surf_data, Income, Hours)
 inz_lnorm <- function(data, primary, secondary=NULL) {
   
