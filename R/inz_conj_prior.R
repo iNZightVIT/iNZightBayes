@@ -303,10 +303,10 @@ inz_dNIG <- function(likelihood=NULL, mu=NULL, lambda=NULL, alpha=NULL, beta=NUL
   }
   
   
-  if (alpha <= 0)
+  if (any(alpha <= 0))
     stop("The alpha parameter must be greater than 0.")
   
-  if (beta <= 0)
+  if (any(beta <= 0))
     stop("The beta parameter must be greater than 0.")
   
   if (is.vector(lambda)) {
