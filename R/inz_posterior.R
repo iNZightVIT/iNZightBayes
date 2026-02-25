@@ -75,6 +75,7 @@ calculate_posterior.inz_dbeta <- function(prior, cred_level=95, signif_value=4, 
 #' The posterior parameters for \code{inz_ddir} are calculated and updated using:
 #' \deqn{\boldsymbol{\alpha}_{post} = \boldsymbol{\alpha}_{prior} + \mathbf{x}}
 #' 
+#' @export
 calculate_posterior.inz_ddir <- function(prior, cred_level=95, signif_value=4, ...) {
   
   likelihood <- attr(prior,"likelihood")
@@ -115,6 +116,7 @@ calculate_posterior.inz_ddir <- function(prior, cred_level=95, signif_value=4, .
 #' Murphy, K. P. (2007). \emph{Conjugate Bayesian analysis of the Gaussian distribution} (Technical Report).
 #' The University of British Columbia. \url{https://www.cs.ubc.ca/~murphyk/Papers/bayesGauss.pdf}
 #' 
+#' @export
 calculate_posterior.inz_dNIG <- function(prior, cred_level=95, signif_value=4, ...) {
   
   likelihood <- attr(prior,"likelihood")
@@ -166,6 +168,7 @@ calculate_posterior.inz_dNIG <- function(prior, cred_level=95, signif_value=4, .
 #' \deqn{a_n = a_0 + \frac{n}{2}}
 #' \deqn{b_n = b_0 + \frac{1}{2} (\mathbf{y}^T \mathbf{y} + \boldsymbol{\mu}_0^T \boldsymbol{\Lambda}_0 \boldsymbol{\mu}_0 - \boldsymbol{\mu}_n^T \boldsymbol{\Lambda}_n \boldsymbol{\mu}_n)}
 #' 
+#' @export
 calculate_posterior.inz_dNIG_reg <- function(prior, cred_level=95, signif_value=4, ...) {
   
   likelihood <- attr(prior,"likelihood")
