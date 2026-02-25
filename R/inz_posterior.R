@@ -14,6 +14,13 @@
 #' The \code{cred_level} and \code{signif_value} is stored as an attribute.
 #' 
 #' @export
+#' 
+#' @examples
+#' # Beta-Binomial example
+#' lik <- inz_lbinom(surf_data, Gender)
+#' prior <- inz_dbeta(likelihood = lik)
+#' calculate_posterior(prior = prior)
+#' 
 calculate_posterior <- function(prior, ...) {
   UseMethod("calculate_posterior")
 }
