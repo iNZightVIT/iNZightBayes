@@ -36,8 +36,12 @@ calculate_posterior <- function(prior, ...) {
 #' \bold{Beta-Binomial conjugacy:}
 #' 
 #' The posterior parameters for \code{inz_dbeta} are calculated and updated using:
-#' \deqn{\alpha_{post} = \alpha_{prior} + x}
-#' \deqn{\beta_{post} = \beta_{prior} + N - x}
+#' \deqn{
+#' \begin{aligned}
+#' \alpha_{post} &= \alpha_{prior} + x \\
+#' \beta_{post} &= \beta_{prior} + N - x
+#' \end{aligned}
+#' }
 #' 
 #' @export
 calculate_posterior.inz_dbeta <- function(prior, cred_level=95, signif_value=4, ...) {
@@ -106,10 +110,14 @@ calculate_posterior.inz_ddir <- function(prior, cred_level=95, signif_value=4, .
 #' \bold{Normal-Inverse-Gamma Prior, Normal Likelihood conjugacy:}
 #' 
 #' The posterior parameters for \code{inz_dNIG} are calculated and updated using:
-#' \deqn{V_n = \left( \frac{1}{V_0} + n \right)^{-1}}
-#' \deqn{m_n = V_n \left( \frac{m_0}{V_0} + n \bar{x} \right)}
-#' \deqn{a_n = a_0 + \frac{n}{2}}
-#' \deqn{b_n = b_0 + \frac{1}{2} \left(\frac{m_0^2}{V_0} + \sum_{i} x_i^2 - \frac{m_n^2}{V_n} \right)}
+#' \deqn{
+#' \begin{aligned}
+#' V_n &= \left( \frac{1}{V_0} + n \right)^{-1} \\
+#' m_n &= V_n \left( \frac{m_0}{V_0} + n \bar{x} \right) \\
+#' a_n &= a_0 + \frac{n}{2} \\
+#' b_n &= b_0 + \frac{1}{2} \left(\frac{m_0^2}{V_0} + \sum_{i} x_i^2 - \frac{m_n^2}{V_n} \right)
+#' \end{aligned}
+#' }
 #' (Murphy, 2007, Section 6.3).
 #' 
 #' @references 
@@ -163,10 +171,14 @@ calculate_posterior.inz_dNIG <- function(prior, cred_level=95, signif_value=4, .
 #' \bold{Normal-Inverse-Gamma Prior, Normal Likelihood conjugacy for regression:}
 #' 
 #' The posterior parameters for \code{inz_dNIG_reg} is calculated and updated using:
-#' \deqn{\boldsymbol{\Lambda}_n = \mathbf{X}^T \mathbf{X} + \boldsymbol{\Lambda}_0}
-#' \deqn{\boldsymbol{\mu}_n = \boldsymbol{\Lambda}_n^{-1} (\mathbf{X}^T \mathbf{X} \hat{\boldsymbol{\beta}} + \boldsymbol{\Lambda}_0 \boldsymbol{\mu}_0)}
-#' \deqn{a_n = a_0 + \frac{n}{2}}
-#' \deqn{b_n = b_0 + \frac{1}{2} (\mathbf{y}^T \mathbf{y} + \boldsymbol{\mu}_0^T \boldsymbol{\Lambda}_0 \boldsymbol{\mu}_0 - \boldsymbol{\mu}_n^T \boldsymbol{\Lambda}_n \boldsymbol{\mu}_n)}
+#' \deqn{
+#' \begin{aligned}
+#' \boldsymbol{\Lambda}_n &= \mathbf{X}^T \mathbf{X} + \boldsymbol{\Lambda}_0 \\
+#' \boldsymbol{\mu}_n &= \boldsymbol{\Lambda}_n^{-1} (\mathbf{X}^T \mathbf{X} \hat{\boldsymbol{\beta}} + \boldsymbol{\Lambda}_0 \boldsymbol{\mu}_0) \\
+#' a_n &= a_0 + \frac{n}{2} \\
+#' b_n &= b_0 + \frac{1}{2} (\mathbf{y}^T \mathbf{y} + \boldsymbol{\mu}_0^T \boldsymbol{\Lambda}_0 \boldsymbol{\mu}_0 - \boldsymbol{\mu}_n^T \boldsymbol{\Lambda}_n \boldsymbol{\mu}_n)
+#' \end{aligned}
+#' }
 #' 
 #' @export
 calculate_posterior.inz_dNIG_reg <- function(prior, cred_level=95, signif_value=4, ...) {
