@@ -9,14 +9,24 @@
 #' @param ... Currently no additional arguments.
 #' 
 #' @return
-#' An object of class \code{summary.inz_*}, which is automatically printed
-#' via the corresponding \code{print} method.
+#' An object of class \code{summary.inz_*}, which is used by the corresponding 
+#' \code{print} method to automatically print the output.
 #' 
 #' @seealso  
 #' \code{\link{calculate_posterior}}
 #' 
 #' @examples
+#' # Beta-Binomial example
+#' lik <- inz_lbinom(surf_data, Gender)
+#' prior <- inz_dbeta(likelihood = lik)
+#' posterior <- calculate_posterior(prior = prior)
+#' summary(posterior)
 #' 
+#' # Regression example (Normal-Inverse-Gamma)
+#' lik <- inz_lnorm(surf_data, Income, Hours)
+#' prior <- inz_dNIG(likelihood = lik)
+#' posterior <- calculate_posterior(prior = prior)
+#' summary(posterior)
 #' 
 NULL
 
@@ -279,8 +289,8 @@ print.summary.inz_ddir <- function(result, ...) {
 #' @details
 #' \bold{Normal-Inverse-Gamma Prior, Normal Likelihood} (\code{inz_dNIG} or \code{inz_dNIG_reg}):
 #' 
-#' The point estimates are the posterior mean computed in \code{calculate_posterior} 
-#' (\eqn{m_n} or \eqn{\boldsymbol{\mu}_n} for regression).
+#' The posterior mean computed in \code{calculate_posterior} 
+#' (\eqn{m_n} or \eqn{\boldsymbol{\mu}_n} for regression) are the point estimates.
 #' 
 #' The marginal posterior distribution of the mean follows a t-distribution.
 #' Hence, the credible intervals are calculated using the quantile function \link{qt}. 
