@@ -21,6 +21,11 @@
 #' prior <- inz_dbeta(likelihood = lik)
 #' calculate_posterior(prior = prior)
 #' 
+#' # Regression example (Normal-Inverse-Gamma)
+#' lik <- inz_lnorm(surf_data, Income, Hours)
+#' prior <- inz_dNIG(likelihood = lik)
+#' calculate_posterior(prior = prior)
+#' 
 calculate_posterior <- function(prior, ...) {
   UseMethod("calculate_posterior")
 }
