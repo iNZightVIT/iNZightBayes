@@ -22,7 +22,8 @@ knitr::opts_chunk$set(
 
 <!-- badges: end -->
 
-The goal of iNZightBayes is to ...
+The goal of iNZightBayes is to lower the barrier to entry for Bayesian analysis by providing a simple interface for Bayesian estimation and inference.
+When combined with iNZight (a GUI) students and anyone else just getting started with Bayesian analysis can quickly start exploring priors and posteriors to develop an understanding, before learning the technical and coding details.
 
 ## Installation
 

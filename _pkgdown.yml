@@ -1,1 +1,9 @@
-url: https://inzightvit.github.io/iNZightBayes
+url: https://bayes.inzight.nz
+
+template:
+  package: iNZightBayes
+  bootstrap: 5
+
+authors:
+  Tom Elliott:
+    href: https://tomelliott.co.nz
