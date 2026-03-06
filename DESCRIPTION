@@ -25,7 +25,6 @@ Imports:
     ggplot2,
     patchwork,
     Rcpp,
-    rlang,
     stats,
     tidybayes,
     MASS
