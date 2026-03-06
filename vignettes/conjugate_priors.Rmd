@@ -33,7 +33,7 @@ To demonstrate how the functions work together, we will use the **SURFIncomeSurv
 
 ```{r setup}
 library(iNZightBayes)
-surf_data <- iNZightTools::smart_read("surf.csv")
+surf_data <- read.csv("surf.csv")
 head(surf_data)
 ```
 
