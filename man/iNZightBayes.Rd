@@ -2,6 +2,7 @@
 % Please edit documentation in R/iNZightBayes.R
 \docType{package}
 \name{iNZightBayes}
+\alias{iNZightBayes-package}
 \alias{iNZightBayes}
 \title{iNZightBayes}
 \description{

@@ -29,11 +29,11 @@ Estimate the sample mean
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{default}: Default method
+\item \code{estimate_mean(default)}: Default method
 
-\item \code{formula}: Method for a formula
+\item \code{estimate_mean(formula)}: Method for a formula
+
 }}
-
 \examples{
 post <- estimate_mean(rnorm(100, 50, 5))
 summary(post)

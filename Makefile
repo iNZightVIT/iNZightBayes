@@ -29,3 +29,6 @@ clean:
 
 pkgdown:
 	@$(RCMD) -e "pkgdown::build_site()"
+
+site: README.md document install
+        @$(RCMD) -e "pkgdown::build_site()"

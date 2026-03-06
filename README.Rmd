@@ -66,9 +66,9 @@ x <- cbind(iris$Sepal.Width)
 post <- gibbs_lm(y, x, 100)
 
 par(mfrow = c(1, 2))
-plot(post$posterior$beta)
+plot(post$posterior$beta.1)
 plot(x[,1], y)
-apply(post$posterior$beta, 1,
+apply(post$posterior[,1:2], 1,
   function(b)
     lines(x[,1], cbind(1, x) %*% b, col = "#00990030"))
 ```
