@@ -29,11 +29,11 @@ Estimate a linear regression model
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{default}: Default method
+\item \code{estimate_lm(default)}: Default method
 
-\item \code{formula}: Method for a formula
+\item \code{estimate_lm(formula)}: Method for a formula
+
 }}
-
 \examples{
 post <- estimate_lm(Petal.Length ~ Petal.Width, data = iris)
 summary(post)

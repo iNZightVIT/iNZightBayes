@@ -12,7 +12,7 @@ License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
+RoxygenNote: 7.3.3
 LinkingTo:
     Rcpp,
     RcppArmadillo
@@ -32,4 +32,9 @@ Suggests:
     testthat (>= 3.0.0),
     rmarkdown
 Config/testthat/edition: 3
+Config/Needs/dependencies:
+    rcmdcheck,
+    curl
+Config/Needs/coverage:
+    covr
 VignetteBuilder: knitr

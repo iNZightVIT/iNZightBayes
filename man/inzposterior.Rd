@@ -38,20 +38,23 @@
 All posterior results are returned with this class, which includes
 methods for obtaining posterior summaries and samples.
 }
+\section{Methods (by generic)}{
+\itemize{
+\item \code{print(inzposterior)}: Print method for iNZight posterior obejcts
+
+\item \code{summary(inzposterior)}: Summary method for iNZight posterior objects
+
+\item \code{plot(inzposterior)}: Plot method for iNZight posterior objects
+
+\item \code{mean(inzposterior)}: Returns the mean of the estimated parameters
+
+}}
 \section{Functions}{
 \itemize{
-\item \code{print.inzposterior}: Print method for iNZight posterior obejcts
+\item \code{summary(inzexact)}: Summary method for iNZight posterior objects
 
-\item \code{summary.inzposterior}: Summary method for iNZight posterior objects
+\item \code{print(inzexactsummary)}: Plot method for iNZight posterior objects
 
-\item \code{summary.inzexact}: Summary method for iNZight posterior objects
+\item \code{plot(inzexact)}: Plot method for iNZight exact-posterior objects
 
-\item \code{print.inzexactsummary}: Plot method for iNZight posterior objects
-
-\item \code{plot.inzposterior}: Plot method for iNZight posterior objects
-
-\item \code{plot.inzexact}: Plot method for iNZight exact-posterior objects
-
-\item \code{mean.inzposterior}: Returns the mean of the estimated parameters
 }}
-
