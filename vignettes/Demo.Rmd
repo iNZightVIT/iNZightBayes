@@ -1,0 +1,360 @@
+---
+title: "Bayesian Parameter Estimation using the iNZightBayes package"
+author: "Erena Tanabe"
+output:
+  pdf_document:
+    toc: true
+    toc_depth: '2'
+  html_document:
+    toc: true
+    toc_depth: 2
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{css, echo=FALSE}
+h2 {
+  border-bottom: 2.5px solid #4682B4;
+  padding-bottom: 5px;
+}
+```
+
+```{r}
+library(iNZightBayes)
+```
+
+Likelihood functions: inz_lbinom, inz_lmulti, inz_lnorm
+
+Prior functions: inz_dbeta, inz_ddir, inz_dNIG
+
+Posterior calculation: calculate_posterior
+
+Output: summary
+
+To demonstrate how the functions work together, we will use the **SURFIncomeSurvey_200** example dataset from iNZight.
+
+```{r, echo=FALSE}
+surf_data <- read.csv("SURFIncomeSurvey_200_ex.csv")
+```
+
+```{r}
+head(surf_data)
+```
+
+<br>
+
+# Beta-Binomial
+
+This is the parameter estimation method for when the primary variable of interest is a two-level categorical variable. Supports single variable and two-variable (categorical/categorical) cases.
+
+With this application we will use the 'inz_lbinom' and 'inz_dbeta' functions to construct our prior and likelihood object.
+
+
+## Univariate application
+
+### Gender variable
+
+```{r}
+head(surf_data$Gender, n=10)
+```
+
+First, we construct our **likelihood** object from the data. This is the likelihood component of the Bayes' Theorem, $p(x | \theta)$.
+
+```{r}
+likelihood <- inz_lbinom(surf_data, Gender)
+```
+
+*With this variable, we would like to estimate the proportion of females ('successes') in the population, $\theta$. Hence, we will also be inherently estimating the proportion of males ('failures'), 1-$\theta$, as well.*
+
+Next, we set up **the prior**, by passing the likelihood object into the prior function. This is the prior component of the Bayes' Theorem $p(\theta)$. To start off, we will use an uninformative prior, Beta(1,1). This is the default prior set in the 'inz_dbeta' function.
+
+```{r}
+prior <- inz_dbeta(likelihood)
+```
+
+
+
+
+
+```{r, echo=FALSE}
+theta <- seq(0, 1, by=0.001)
+y <- dbeta(theta, prior$alpha, prior$beta)
+
+plot(theta, y, type="n", ylim=c(0,1.2),
+     main=paste0("Beta(", prior$alpha, ",", prior$beta, ") prior"),
+     xlab=expression(theta), ylab="Density", yaxs="i")
+polygon(x=c(0,theta,1), 
+        y=c(0,y,0),
+        col="powderblue")
+```
+
+*Beta(1,1) = Uniform(0,1). With this prior, we are essentially implying that we don't have prior knowledge of $\theta$ (the proportion of females) in the population. Hence, all possible values of $\theta$ are assigned equal probability.*
+
+Finally, we pass the prior object which contains the likelihood and prior information into the calculate_posterior function. This function calculates the **posterior** parameters. This is the posterior component of the Bayes' Theorem, $p(\theta | x)$.
+
+```{r}
+posterior <- calculate_posterior(prior)
+```
+
+This posterior object is used to obtain posterior estimates and credible interval values through summary function. 
+
+```{r}
+summary(posterior)
+```
+
+As we used an uninformative prior, the estimate of $\theta$ (and 1-$\theta$) is very similar to the proportions seen in the data itself, which is 0.5350 (107/200) for females and 0.4650 (93/200) for males. 
+
+
+### Changing the prior...
+
+We have prior knowledge/belief that $\theta$, the proportion of females in the population is around 0.5 (50%).
+
+Let's change the prior to an informative prior of **Beta(50,50)**:
+
+```{r}
+prior <- inz_dbeta(likelihood, alpha = 50, beta = 50)
+```
+
+```{r, echo=FALSE}
+theta <- seq(0, 1, by=0.001)
+y <- dbeta(theta, prior$alpha, prior$beta)
+
+plot(theta, y, type="n",
+     main=paste0("Beta(", prior$alpha, ",", prior$beta, ") prior"),
+     xlab=expression(theta), ylab="Density", yaxs="i")
+polygon(x=c(0,theta,1), 
+        y=c(0,y,0),
+        col="powderblue")
+```
+
+Compared to the uninformative prior we used before, this prior assigns the highest probability to $\theta$ = 0.5. The probability gradually decreases for higher and lower values of $\theta$ (from 0.5).
+
+```{r}
+posterior <- calculate_posterior(prior)
+summary(posterior)
+```
+
+We can observe that the estimate of the proportion of females in the population, $\theta$, has decreased to 0.5233 (52.33%) from 0.5347 (53.47%) using the informative prior.
+
+
+<br>
+
+## Output settings
+
+**We can set the credible level of the credible interval outputs. This is done using the `cred_level` argument.**
+
+The default credible level is 95%. 
+
+If we want a 90% credible interval for our estimates, `cred_level=90`:
+
+```{r}
+posterior <- calculate_posterior(prior, cred_level=90)
+summary(posterior)
+```
+
+<br>
+
+**We can also round the output values (in significant figures). This is done using the `signif_value` argument.**
+
+The output below are rounded to 2 significant figures:
+
+```{r}
+posterior <- calculate_posterior(prior, signif_value=2)
+summary(posterior)
+```
+
+<br>
+
+## Bivariate application
+
+### Gender vs Qualification
+
+**The data:**
+
+```{r}
+likelihood <- inz_lbinom(surf_data, Gender, Qualification)
+```
+
+With the two variables, we would like to estimate the proportion of females ('successes') (and hence, the proportion of males (‘failures’)) conditional on the groups in the secondary variable (Qualification).
+
+In other words, we want to estimate the proportion of Gender for each group/level in Qualification.
+
+**The prior:**
+
+We will use **Beta(1,1) prior** (Uniform prior) for all groups:
+
+```{r}
+prior <- inz_dbeta(likelihood)
+```
+
+```{r, echo=FALSE}
+theta <- seq(0, 1, by=0.001)
+
+par(mfrow=c(2,2))
+
+for (i in 1:length(likelihood$groups)) {
+  
+  y <- dbeta(theta, prior$alpha[i], prior$beta[i])
+  
+  plot(theta, y, type = "n", ylim=c(0,1.2),
+       main=paste0("Prior for ", likelihood$groups[i], 
+                  "\nBeta(", prior$alpha[i],",", prior$beta[i],")"),
+       xlab=expression(theta),
+       ylab="Density", yaxs = "i")
+  polygon(c(0, theta, 1), 
+          c(0, y, 0), 
+          col = "powderblue")
+  
+}
+```
+
+**The posterior:**
+
+```{r}
+posterior <- calculate_posterior(prior)
+summary(posterior)
+```
+
+
+### Changing the prior...
+
+Let's change the prior for degree group. 
+
+We have a prior belief that the proportion of females whose highest qualification is a degree is lower than males and is somewhere around 0.35. 
+
+```{r}
+prior <- inz_dbeta(likelihood, alpha = c(15,1,1,1), beta = c(27,1,1,1))
+```
+
+```{r, echo=FALSE}
+theta <- seq(0, 1, by=0.001)
+
+par(mfrow=c(2,2))
+
+for (i in 1:length(likelihood$groups)) {
+  
+  y <- dbeta(theta, prior$alpha[i], prior$beta[i])
+  
+  plot(theta, y, type = "n", ylim=c(0, (max(y)+0.2)),
+       main=paste0("Prior for ", likelihood$groups[i], 
+                  "\nBeta(", prior$alpha[i],",", prior$beta[i],")"),
+       xlab=expression(theta),
+       ylab="Density", yaxs = "i")
+  polygon(c(0, theta, 1), 
+          c(0, y, 0), 
+          col = "powderblue")
+  
+}
+```
+
+```{r}
+posterior <- calculate_posterior(prior)
+summary(posterior)
+```
+
+<br>
+
+
+# Dirichlet-Multinomial
+
+This is the parameter estimation method for when the primary variable of interest is a multi-level categorical variable. Supports single variable and two-variable (categorical/categorical) cases.
+
+With this application we will use the 'inz_lmulti' and 'inz_ddir' functions to construct our prior and likelihood object.
+
+
+## Univariate application
+
+### Qualification variable 
+
+```{r}
+head(surf_data$Qualification, n=10)
+```
+
+```{r}
+likelihood <- inz_lmulti(surf_data, Qualification)
+```
+
+```{r}
+prior <- inz_ddir(likelihood)
+```
+
+
+Using a **Dirichlet(1,1,1,1) prior** (Uniform)
+
+
+The posterior:
+```{r}
+posterior <- calculate_posterior(prior)
+summary(posterior)
+```
+
+
+
+
+<br> 
+
+### Using a differnt prior
+
+The likelihood (data) remains the same
+
+Let's use the Jeffreys prior - **Dirichlet(0.5,0.5,0.5,0.5)**:
+```{r}
+prior <- inz_ddir(likelihood, alpha = rep(0.5, 4))
+```
+
+```{r}
+posterior <- calculate_posterior(prior)
+summary(posterior)
+```
+
+<br>
+
+## Bivariate application
+
+### Qualification vs Gender 
+
+```{r}
+table(surf_data$Qualification, surf_data$Gender)
+```
+
+```{r}
+likelihood <- inz_lmulti(surf_data, Qualification, Gender)
+```
+
+```{r}
+prior <- inz_ddir(likelihood)
+```
+
+```{r}
+posterior <- calculate_posterior(prior)
+summary(posterior)
+```
+
+
+### Qualification vs Ethnicity 
+
+```{r}
+likelihood <- inz_lmulti(surf_data, Qualification, Ethnicity)
+```
+
+```{r}
+prior <- inz_ddir(likelihood)
+```
+
+```{r}
+posterior <- calculate_posterior(prior)
+summary(posterior)
+```
+
+**Changing prior**
+
+```{r}
+prior <- inz_ddir(likelihood, alpha = matrix(rep(0.5,16), ncol=length(likelihood$levels)))
+```
+
+```{r}
+posterior <- calculate_posterior(prior)
+summary(posterior)
+```
