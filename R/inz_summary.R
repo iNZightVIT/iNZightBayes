@@ -5,7 +5,7 @@
 #' Compute and display posterior summaries. This includes the point 
 #' estimate (posterior mean) and equal-tailed credible intervals.
 #' 
-#' @param posterior_obj A posterior object returned by \code{calculate_posterior}.
+#' @param object A posterior object returned by \code{calculate_posterior}.
 #' @param ... Currently no additional arguments.
 #' 
 #' @return
@@ -43,16 +43,16 @@ NULL
 #' The credible intervals are calculated using the quantile function \link{qbeta}.
 #' 
 #' @export
-summary.inz_dbeta <- function(posterior_obj, ...) {
+summary.inz_dbeta <- function(object, ...) {
   
-  alpha_post <- posterior_obj$posterior$alpha
-  beta_post <- posterior_obj$posterior$beta
-  cred_level <- attr(posterior_obj, "cred_level")
-  signif_value <- attr(posterior_obj, "signif_value")
+  alpha_post <- object$posterior$alpha
+  beta_post <- object$posterior$beta
+  cred_level <- attr(object, "cred_level")
+  signif_value <- attr(object, "signif_value")
   
-  prior <- posterior_obj$prior
-  levels <- posterior_obj$data$levels
-  groups <- posterior_obj$data$groups
+  prior <- object$prior
+  levels <- object$data$levels
+  groups <- object$data$groups
   
   # Estimate
   post_mean <- alpha_post/(alpha_post+beta_post)
@@ -158,17 +158,17 @@ print.summary.inz_dbeta <- function(result, ...) {
 #' \link{qbeta}.
 #' 
 #' @export
-summary.inz_ddir <- function(posterior_obj, ...) {
+summary.inz_ddir <- function(object, ...) {
   
-  prior <- posterior_obj$prior
-  levels <- posterior_obj$data$levels
-  groups <- posterior_obj$data$groups
-  cred_level <- attr(posterior_obj, "cred_level")
-  signif_value <- attr(posterior_obj, "signif_value")
+  prior <- object$prior
+  levels <- object$data$levels
+  groups <- object$data$groups
+  cred_level <- attr(object, "cred_level")
+  signif_value <- attr(object, "signif_value")
   
-  k <- posterior_obj$posterior$k
+  k <- object$posterior$k
   
-  alpha_post <- posterior_obj$posterior$alpha
+  alpha_post <- object$posterior$alpha
   
   
   # Concentration parameter calculation
@@ -296,16 +296,16 @@ print.summary.inz_ddir <- function(result, ...) {
 #' Hence, the credible intervals are calculated using the quantile function \link{qt}. 
 #' 
 #' @export
-summary.inz_dNIG <- function(posterior_obj, ...) {
+summary.inz_dNIG <- function(object, ...) {
   
-  mn <- posterior_obj$posterior$mu
-  Vn <- posterior_obj$posterior$V
-  an <- posterior_obj$posterior$alpha
-  bn <- posterior_obj$posterior$beta
+  mn <- object$posterior$mu
+  Vn <- object$posterior$V
+  an <- object$posterior$alpha
+  bn <- object$posterior$beta
   
-  group <- rownames(posterior_obj$data$summary_stat)
-  cred_level <- attr(posterior_obj, "cred_level")
-  signif_value <- attr(posterior_obj, "signif_value")
+  group <- rownames(object$data$summary_stat)
+  cred_level <- attr(object, "cred_level")
+  signif_value <- attr(object, "signif_value")
   
   
   # t-distribution parameters
@@ -338,7 +338,7 @@ summary.inz_dNIG <- function(posterior_obj, ...) {
   # Output 
   result <- list(
     estimate = estimate,
-    prior = posterior_obj$prior,
+    prior = object$prior,
     group = group,
     cred_level = cred_level,
     signif_value = signif_value
@@ -375,16 +375,16 @@ print.summary.inz_dNIG <- function(result, ...) {
 
 #' @rdname posterior_summary
 #' @export
-summary.inz_dNIG_reg <- function(posterior_obj, ...) {
+summary.inz_dNIG_reg <- function(object, ...) {
   
-  mn <- posterior_obj$posterior$mu
-  lambdan <- posterior_obj$posterior$lambda
-  an <- posterior_obj$posterior$alpha
-  bn <- posterior_obj$posterior$beta
+  mn <- object$posterior$mu
+  lambdan <- object$posterior$lambda
+  an <- object$posterior$alpha
+  bn <- object$posterior$beta
   
-  y_label <- posterior_obj$data$y_label
-  cred_level <- attr(posterior_obj, "cred_level")
-  signif_value <- attr(posterior_obj, "signif_value")
+  y_label <- object$data$y_label
+  cred_level <- attr(object, "cred_level")
+  signif_value <- attr(object, "signif_value")
   
   
   # t-distribution parameters
@@ -411,7 +411,7 @@ summary.inz_dNIG_reg <- function(posterior_obj, ...) {
   # Output 
   result <- list(
     estimate = estimate,
-    prior = posterior_obj$prior,
+    prior = object$prior,
     cred_level = cred_level,
     signif_value = signif_value
   )
