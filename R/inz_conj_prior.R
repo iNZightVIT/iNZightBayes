@@ -39,18 +39,23 @@
 #'
 #' @examples
 #' # Constructing the prior with the likelihood (default prior is used)
+#' \dontrun{
 #' lik <- inz_lbinom(surf_data, Gender)
 #' inz_dbeta(likelihood = lik)
 #' 
 #' # Using a subjective prior 
 #' inz_dbeta(likelihood = lik, alpha = 8, beta = 2)
+#' }
 #' 
 #' # Grouped data example
+#' \dontrun{
 #' grouped_lik <- inz_lbinom(surf_data, Gender, Qualification)
 #' inz_dbeta(likelihood = grouped_lik)
+#' }
 #' 
 #' # Example of inz_dbeta usage in the calculate_posterior function
 #' inz_dbeta(alpha = 108, beta = 94)
+#' 
 #' @seealso
 #' \code{\link{inz_lbinom}}
 #' 
@@ -126,18 +131,23 @@ inz_dbeta <- function(likelihood=NULL, alpha=NULL, beta=NULL) {
 #'
 #' @examples
 #' # Constructing the prior with the likelihood (default prior is used)
+#' \dontrun{
 #' lik <- inz_lmulti(surf_data, Qualification)
 #' inz_ddir(likelihood = lik)
 #' 
 #' # Using a subjective prior (prior belief that degree and school qualifications are more common)
 #' inz_ddir(likelihood = lik, alpha = c(10, 2, 10, 2))
+#' }
 #' 
 #' # Grouped data example
+#' \dontrun{
 #' grouped_lik <- inz_lmulti(surf_data, Qualification, Ethnicity)
 #' inz_ddir(likelihood = grouped_lik)
+#' }
 #' 
 #' # Example of inz_ddir usage in the calculate_posterior function
 #' posterior <- inz_ddir(alpha = c(29,40,67,68), k = 4)
+#' 
 #' @seealso
 #' \code{\link{inz_lmulti}}
 #' 
@@ -253,15 +263,19 @@ inz_ddir <- function(likelihood=NULL, alpha=NULL, k=NULL) {
 #'
 #' @examples
 #' # Constructing the prior with the likelihood (default prior is used)
+#' \dontrun{
 #' lik <- inz_lnorm(surf_data, Income)
 #' inz_dNIG(likelihood = lik)
 #' 
 #' # Using a subjective prior
 #' inz_dNIG(likelihood = lik, mu = 500, lambda = 10, alpha = 5, beta = 1)
+#' }
 #' 
 #' # Regression example
+#' \dontrun{
 #' reg_lik <- inz_lnorm(surf_data, Income, Hours)
 #' inz_dNIG(likelihood = reg_lik)
+#' }
 #' 
 #' # Example of inz_dNIG usage in the calculate_posterior function
 #' inz_dNIG(mu = 572.4975, lambda = 201, alpha = 100.001, beta = 12118391)

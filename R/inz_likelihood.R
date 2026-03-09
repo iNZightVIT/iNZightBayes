@@ -30,10 +30,10 @@
 #'
 #' @examples
 #' # Single variable
-#' inz_lbinom(surf_data, Gender)
+#' \dontrun{inz_lbinom(surf_data, Gender)}
 #' 
 #' # Two variables (grouped data)
-#' inz_lbinom(surf_data, Gender, Qualification)
+#' \dontrun{inz_lbinom(surf_data, Gender, Qualification)}
 inz_lbinom <- function(data, primary, secondary=NULL) {
   
   function_call <- match.call()
@@ -120,11 +120,11 @@ inz_lbinom <- function(data, primary, secondary=NULL) {
 #'
 #' @examples
 #' # Single variable
-#' inz_lmulti(surf_data, Qualification)
+#' \dontrun{inz_lmulti(surf_data, Qualification)}
 #' 
 #' # Two variables (grouped data)
-#' inz_lmulti(surf_data, Qualification, Gender)
-#' inz_lmulti(surf_data, Qualification, Ethnicity)
+#' \dontrun{inz_lmulti(surf_data, Qualification, Gender)}
+#' \dontrun{inz_lmulti(surf_data, Qualification, Ethnicity)}
 inz_lmulti <- function(data, primary, secondary=NULL) {
   
   function_call <- match.call()
@@ -238,14 +238,14 @@ inz_lmulti <- function(data, primary, secondary=NULL) {
 #'
 #' @examples
 #' # Single variable
-#' inz_lnorm(surf_data, Hours)
+#' \dontrun{inz_lnorm(surf_data, Hours)}
 #' 
 #' # Numeric and Categorical (grouped data)
-#' inz_lnorm(surf_data, Income, Qualification)
-#' inz_lnorm(surf_data, Qualification, Income) # gives the same output
+#' \dontrun{inz_lnorm(surf_data, Income, Qualification)}
+#' \dontrun{inz_lnorm(surf_data, Qualification, Income)} # gives the same output
 #' 
 #' # Numeric and Numeric (regression)
-#' inz_lnorm(surf_data, Income, Hours)
+#' \dontrun{inz_lnorm(surf_data, Income, Hours)}
 inz_lnorm <- function(data, primary, secondary=NULL) {
   
   function_call <- match.call()

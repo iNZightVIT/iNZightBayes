@@ -17,16 +17,20 @@
 #' 
 #' @examples
 #' # Beta-Binomial example
+#' \dontrun{
 #' lik <- inz_lbinom(surf_data, Gender)
 #' prior <- inz_dbeta(likelihood = lik)
 #' posterior <- calculate_posterior(prior = prior)
 #' summary(posterior)
+#' }
 #' 
 #' # Regression example (Normal-Inverse-Gamma)
+#' \dontrun{
 #' lik <- inz_lnorm(surf_data, Income, Hours)
 #' prior <- inz_dNIG(likelihood = lik)
 #' posterior <- calculate_posterior(prior = prior)
 #' summary(posterior)
+#' }
 #' 
 NULL
 
