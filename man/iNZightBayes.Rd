@@ -8,6 +8,14 @@
 \description{
 Description of your package
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://bayes.inzight.nz}
+  \item Report bugs at \url{https://github.com/iNZightVIT/iNZightBayes/issues}
+}
+
+}
 \author{
 Tom Elliott \href{mailto:tom.elliott@auckland.ac.nz}{tom.elliott@auckland.ac.nz}
 }
