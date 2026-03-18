@@ -81,14 +81,18 @@ b_n &= b_0 + \frac{1}{2} (\mathbf{y}^T \mathbf{y} + \boldsymbol{\mu}_0^T \boldsy
 }
 \examples{
 # Beta-Binomial example
+\dontrun{
 lik <- inz_lbinom(surf_data, Gender)
 prior <- inz_dbeta(likelihood = lik)
 calculate_posterior(prior = prior)
+}
 
 # Regression example (Normal-Inverse-Gamma)
+\dontrun{
 lik <- inz_lnorm(surf_data, Income, Hours)
 prior <- inz_dNIG(likelihood = lik)
 calculate_posterior(prior = prior)
+}
 
 }
 \references{

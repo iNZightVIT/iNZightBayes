@@ -69,12 +69,12 @@ The \code{secondary} variable is used as the explanatory variable and the
 }
 \examples{
 # Single variable
-inz_lnorm(surf_data, Hours)
+\dontrun{inz_lnorm(surf_data, Hours)}
 
 # Numeric and Categorical (grouped data)
-inz_lnorm(surf_data, Income, Qualification)
-inz_lnorm(surf_data, Qualification, Income) # gives the same output
+\dontrun{inz_lnorm(surf_data, Income, Qualification)}
+\dontrun{inz_lnorm(surf_data, Qualification, Income)} # gives the same output
 
 # Numeric and Numeric (regression)
-inz_lnorm(surf_data, Income, Hours)
+\dontrun{inz_lnorm(surf_data, Income, Hours)}
 }

@@ -38,8 +38,8 @@ for each level of the \code{secondary} variable.
 }
 \examples{
 # Single variable
-inz_lbinom(surf_data, Gender)
+\dontrun{inz_lbinom(surf_data, Gender)}
 
 # Two variables (grouped data)
-inz_lbinom(surf_data, Gender, Qualification)
+\dontrun{inz_lbinom(surf_data, Gender, Qualification)}
 }

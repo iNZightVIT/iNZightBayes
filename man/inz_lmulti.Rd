@@ -34,11 +34,11 @@ If the \code{primary} variable has only two levels, use \code{\link{inz_lbinom}}
 }
 \examples{
 # Single variable
-inz_lmulti(surf_data, Qualification)
+\dontrun{inz_lmulti(surf_data, Qualification)}
 
 # Two variables (grouped data)
-inz_lmulti(surf_data, Qualification, Gender)
-inz_lmulti(surf_data, Qualification, Ethnicity)
+\dontrun{inz_lmulti(surf_data, Qualification, Gender)}
+\dontrun{inz_lmulti(surf_data, Qualification, Ethnicity)}
 }
 \seealso{
 \code{\link{inz_lbinom}}

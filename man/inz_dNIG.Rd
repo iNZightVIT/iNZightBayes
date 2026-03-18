@@ -84,15 +84,19 @@ If no prior parameters are provided, uninformative default values are used for t
 }
 \examples{
 # Constructing the prior with the likelihood (default prior is used)
+\dontrun{
 lik <- inz_lnorm(surf_data, Income)
 inz_dNIG(likelihood = lik)
 
 # Using a subjective prior
 inz_dNIG(likelihood = lik, mu = 500, lambda = 10, alpha = 5, beta = 1)
+}
 
 # Regression example
+\dontrun{
 reg_lik <- inz_lnorm(surf_data, Income, Hours)
 inz_dNIG(likelihood = reg_lik)
+}
 
 # Example of inz_dNIG usage in the calculate_posterior function
 inz_dNIG(mu = 572.4975, lambda = 201, alpha = 100.001, beta = 12118391)

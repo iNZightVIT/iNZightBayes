@@ -48,18 +48,23 @@ variable).
 }
 \examples{
 # Constructing the prior with the likelihood (default prior is used)
+\dontrun{
 lik <- inz_lmulti(surf_data, Qualification)
 inz_ddir(likelihood = lik)
 
 # Using a subjective prior (prior belief that degree and school qualifications are more common)
 inz_ddir(likelihood = lik, alpha = c(10, 2, 10, 2))
+}
 
 # Grouped data example
+\dontrun{
 grouped_lik <- inz_lmulti(surf_data, Qualification, Ethnicity)
 inz_ddir(likelihood = grouped_lik)
+}
 
 # Example of inz_ddir usage in the calculate_posterior function
 posterior <- inz_ddir(alpha = c(29,40,67,68), k = 4)
+
 }
 \seealso{
 \code{\link{inz_lmulti}}

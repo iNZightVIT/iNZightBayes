@@ -8,16 +8,16 @@
 \alias{summary.inz_dNIG_reg}
 \title{Posterior Object Summary}
 \usage{
-\method{summary}{inz_dbeta}(posterior_obj, ...)
+\method{summary}{inz_dbeta}(object, ...)
 
-\method{summary}{inz_ddir}(posterior_obj, ...)
+\method{summary}{inz_ddir}(object, ...)
 
-\method{summary}{inz_dNIG}(posterior_obj, ...)
+\method{summary}{inz_dNIG}(object, ...)
 
-\method{summary}{inz_dNIG_reg}(posterior_obj, ...)
+\method{summary}{inz_dNIG_reg}(object, ...)
 }
 \arguments{
-\item{posterior_obj}{A posterior object returned by \code{calculate_posterior}.}
+\item{object}{A posterior object returned by \code{calculate_posterior}.}
 
 \item{...}{Currently no additional arguments.}
 }
@@ -58,16 +58,20 @@ Hence, the credible intervals are calculated using the quantile function \link{q
 }
 \examples{
 # Beta-Binomial example
+\dontrun{
 lik <- inz_lbinom(surf_data, Gender)
 prior <- inz_dbeta(likelihood = lik)
 posterior <- calculate_posterior(prior = prior)
 summary(posterior)
+}
 
 # Regression example (Normal-Inverse-Gamma)
+\dontrun{
 lik <- inz_lnorm(surf_data, Income, Hours)
 prior <- inz_dNIG(likelihood = lik)
 posterior <- calculate_posterior(prior = prior)
 summary(posterior)
+}
 
 }
 \seealso{

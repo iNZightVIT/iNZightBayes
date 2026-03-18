@@ -39,24 +39,29 @@ the Binomial likelihood.
 
 \bold{For prior use only:}
 If no \code{alpha} or \code{beta} parameter values are provided, a default
-value of \code{\eqn{\alpha}=1} and \code{\eqn{\beta}=1} will be used respectively.
+value of \eqn{\alpha = 1} and \eqn{\beta = 1} will be used respectively.
 Hence, a default prior of Beta(1,1) will be used if \code{alpha} and \code{beta}
 are both \code{NULL}, which is equivalent to a uninformative, Uniform(0,1) prior.
 }
 \examples{
 # Constructing the prior with the likelihood (default prior is used)
+\dontrun{
 lik <- inz_lbinom(surf_data, Gender)
 inz_dbeta(likelihood = lik)
 
 # Using a subjective prior 
 inz_dbeta(likelihood = lik, alpha = 8, beta = 2)
+}
 
 # Grouped data example
+\dontrun{
 grouped_lik <- inz_lbinom(surf_data, Gender, Qualification)
 inz_dbeta(likelihood = grouped_lik)
+}
 
 # Example of inz_dbeta usage in the calculate_posterior function
 inz_dbeta(alpha = 108, beta = 94)
+
 }
 \seealso{
 \code{\link{inz_lbinom}}
