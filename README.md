@@ -11,7 +11,12 @@ coverage](https://codecov.io/gh/iNZightVIT/iNZightBayes/branch/master/graph/badg
 
 <!-- badges: end -->
 
-The goal of iNZightBayes is to …
+The goal of iNZightBayes is to lower the barrier to entry for Bayesian
+analysis by providing a simple interface for Bayesian estimation and
+inference. When combined with iNZight (a GUI) students and anyone else
+just getting started with Bayesian analysis can quickly start exploring
+priors and posteriors to develop an understanding, before learning the
+technical and coding details.
 
 ## Installation
 
@@ -45,25 +50,23 @@ summary(post)
 #> 1. Empirical mean and standard deviation for each variable,
 #>    plus standard error of the mean:
 #> 
-#>          Mean      SD  Naive SE Time-series SE
-#> mu     3.0571 0.03671 0.0011609      0.0011609
-#> sigma2 0.1926 0.02169 0.0006857      0.0006857
+#>          Mean      SD Naive SE Time-series SE
+#> mu     3.0585 0.03608 0.001141       0.001141
+#> sigma2 0.1929 0.02220 0.000702       0.000702
 #> 
 #> 2. Quantiles for each variable:
 #> 
 #>          2.5%    25%    50%    75%  97.5%
-#> mu     2.9845 3.0325 3.0569 3.0809 3.1304
-#> sigma2 0.1559 0.1771 0.1917 0.2057 0.2402
+#> mu     2.9854 3.0358 3.0583 3.0819 3.1270
+#> sigma2 0.1538 0.1774 0.1912 0.2065 0.2448
 plot(post)
 #> Warning: `aes_string()` was deprecated in ggplot2 3.0.0.
 #> ℹ Please use tidy evaluation idioms with `aes()`.
 #> ℹ See also `vignette("ggplot2-in-packages")` for more information.
-#> ℹ The deprecated feature was likely used in the iNZightBayes
-#>   package.
-#>   Please report the issue to the authors.
+#> ℹ The deprecated feature was likely used in the iNZightBayes package.
+#>   Please report the issue at <https://github.com/iNZightVIT/iNZightBayes/issues>.
 #> This warning is displayed once per session.
-#> Call `lifecycle::last_lifecycle_warnings()` to see where this
-#> warning was generated.
+#> Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
 ```
 
 <img src="man/figures/README-example-1.png" alt="" width="100%" />
@@ -74,18 +77,16 @@ In some cases, the posterior can be calculated exactly.
 post <- estimate_proportions(c(20, 50, 30), alpha = c(10, 10, 10))
 summary(post)
 #>          mean       var  2.5% 97.5%
-#> theta_1 0.231 -4.52e-05 0.162 0.309
-#> theta_2 0.462 -3.16e-05 0.378 0.548
-#> theta_3 0.308 -4.07e-05 0.232 0.389
+#> theta_1 0.231 -4.52e-05 0.164 0.306
+#> theta_2 0.462 -3.16e-05 0.376 0.550
+#> theta_3 0.308 -4.07e-05 0.230 0.391
 plot(post)
 #> Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
 #> ℹ Please use `linewidth` instead.
-#> ℹ The deprecated feature was likely used in the iNZightBayes
-#>   package.
-#>   Please report the issue to the authors.
+#> ℹ The deprecated feature was likely used in the iNZightBayes package.
+#>   Please report the issue at <https://github.com/iNZightVIT/iNZightBayes/issues>.
 #> This warning is displayed once per session.
-#> Call `lifecycle::last_lifecycle_warnings()` to see where this
-#> warning was generated.
+#> Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
 ```
 
 <img src="man/figures/README-exact-1.png" alt="" width="100%" />

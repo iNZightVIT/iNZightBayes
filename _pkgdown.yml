@@ -7,3 +7,23 @@ template:
 authors:
   Tom Elliott:
     href: https://tomelliott.co.nz
+
+reference:
+  - title: Bayesian Estimation
+    desc: Functions for Bayesian estimation.
+  - subtitle: Conjugate Priors
+    desc: Functions for conjugate priors.
+  - contents:
+      - starts_with("inz_d")
+      - starts_with("inz_l")
+      - calculate_posterior
+  - subtitle: Other
+    desc: Other functions, work in progress.
+  - contents:
+      - calc
+      - starts_with("estimate_")
+      - starts_with("gibbs_")
+      - inzposterior
+      - posterior_summary
+      - iNZightBayes
+      - rdirichlet
