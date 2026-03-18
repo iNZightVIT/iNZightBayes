@@ -234,6 +234,8 @@ inz_lmulti <- function(data, primary, secondary=NULL) {
 #' \item{x_label}{the name of the explanatory variable.}
 #' \item{y_label}{the name of the response variable.}
 #' 
+#' @importFrom stats quantile na.omit median sd complete.cases cor
+#' 
 #' @export
 #'
 #' @examples

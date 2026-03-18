@@ -46,6 +46,8 @@ NULL
 #' 
 #' The credible intervals are calculated using the quantile function \link{qbeta}.
 #' 
+#' @importFrom stats qbeta
+#' 
 #' @export
 summary.inz_dbeta <- function(object, ...) {
   
@@ -160,6 +162,8 @@ print.summary.inz_dbeta <- function(x, ...) {
 #' The marginal distribution of Dirichlet follows a Beta distribution.
 #' Hence, the credible intervals are calculated using the quantile function 
 #' \link{qbeta}.
+#' 
+#' @importFrom stats qbeta
 #' 
 #' @export
 summary.inz_ddir <- function(object, ...) {
@@ -299,6 +303,8 @@ print.summary.inz_ddir <- function(x, ...) {
 #' The marginal posterior distribution of the mean follows a t-distribution.
 #' Hence, the credible intervals are calculated using the quantile function \link{qt}. 
 #' 
+#' @importFrom stats qt
+#' 
 #' @export
 summary.inz_dNIG <- function(object, ...) {
   
@@ -378,6 +384,9 @@ print.summary.inz_dNIG <- function(x, ...) {
 
 
 #' @rdname posterior_summary
+#' 
+#' @importFrom stats qt
+#' 
 #' @export
 summary.inz_dNIG_reg <- function(object, ...) {
   
