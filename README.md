@@ -46,22 +46,24 @@ summary(post)
 #>    plus standard error of the mean:
 #> 
 #>          Mean      SD  Naive SE Time-series SE
-#> mu     3.0564 0.03643 0.0011520      0.0011566
-#> sigma2 0.1922 0.02177 0.0006885      0.0007266
+#> mu     3.0571 0.03671 0.0011609      0.0011609
+#> sigma2 0.1926 0.02169 0.0006857      0.0006857
 #> 
 #> 2. Quantiles for each variable:
 #> 
-#>         2.5%    25%    50%   75%  97.5%
-#> mu     2.984 3.0315 3.0573 3.082 3.1255
-#> sigma2 0.154 0.1771 0.1909 0.205 0.2382
+#>          2.5%    25%    50%    75%  97.5%
+#> mu     2.9845 3.0325 3.0569 3.0809 3.1304
+#> sigma2 0.1559 0.1771 0.1917 0.2057 0.2402
 plot(post)
 #> Warning: `aes_string()` was deprecated in ggplot2 3.0.0.
 #> ℹ Please use tidy evaluation idioms with `aes()`.
 #> ℹ See also `vignette("ggplot2-in-packages")` for more information.
-#> ℹ The deprecated feature was likely used in the iNZightBayes package.
+#> ℹ The deprecated feature was likely used in the iNZightBayes
+#>   package.
 #>   Please report the issue to the authors.
 #> This warning is displayed once per session.
-#> Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
+#> Call `lifecycle::last_lifecycle_warnings()` to see where this
+#> warning was generated.
 ```
 
 <img src="man/figures/README-example-1.png" alt="" width="100%" />
@@ -72,16 +74,18 @@ In some cases, the posterior can be calculated exactly.
 post <- estimate_proportions(c(20, 50, 30), alpha = c(10, 10, 10))
 summary(post)
 #>          mean       var  2.5% 97.5%
-#> theta_1 0.231 -4.52e-05 0.164 0.306
-#> theta_2 0.462 -3.16e-05 0.375 0.546
-#> theta_3 0.308 -4.07e-05 0.231 0.390
+#> theta_1 0.231 -4.52e-05 0.162 0.309
+#> theta_2 0.462 -3.16e-05 0.378 0.548
+#> theta_3 0.308 -4.07e-05 0.232 0.389
 plot(post)
 #> Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
 #> ℹ Please use `linewidth` instead.
-#> ℹ The deprecated feature was likely used in the iNZightBayes package.
+#> ℹ The deprecated feature was likely used in the iNZightBayes
+#>   package.
 #>   Please report the issue to the authors.
 #> This warning is displayed once per session.
-#> Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
+#> Call `lifecycle::last_lifecycle_warnings()` to see where this
+#> warning was generated.
 ```
 
 <img src="man/figures/README-exact-1.png" alt="" width="100%" />
