@@ -116,31 +116,31 @@ summary.inz_dbeta <- function(object, ...) {
 }
 
 #' @exportS3Method
-print.summary.inz_dbeta <- function(result, ...) {
+print.summary.inz_dbeta <- function(x, ...) {
   
-  groups <- result$groups
+  groups <- x$groups
   
   if (length(groups)==1) {
     
-    cat("Estimated Proportions with ", result$cred_level, 
-        "% Credible Interval using a Beta(", result$prior$alpha, ",",
-        result$prior$beta, ") prior\n\n", sep="")
+    cat("Estimated Proportions with ", x$cred_level, 
+        "% Credible Interval using a Beta(", x$prior$alpha, ",",
+        x$prior$beta, ") prior\n\n", sep="")
     
-    print(signif(result$estimates, result$signif_value))
+    print(signif(x$estimates, x$signif_value))
     
   } else {
     
     cat("Prior\n")
     
-    print(noquote(result$prior_param))
+    print(noquote(x$prior_param))
     
     cat("\n\nEstimated Proportions\n\n")
     
-    print(signif(result$estimates, result$signif_value))
+    print(signif(x$estimates, x$signif_value))
     
-    cat("\n\n", result$cred_level, "% Credible Intervals\n\n", sep="")
+    cat("\n\n", x$cred_level, "% Credible Intervals\n\n", sep="")
     
-    print(signif(result$cred_interval, result$signif_value))
+    print(signif(x$cred_interval, x$signif_value))
     
   }
   
@@ -255,32 +255,32 @@ summary.inz_ddir <- function(object, ...) {
 
 
 #' @exportS3Method
-print.summary.inz_ddir <- function(result, ...) {
+print.summary.inz_ddir <- function(x, ...) {
   
-  groups <- result$groups
+  groups <- x$groups
   
   if (length(groups) == 1) {
     
-    cat("Estimated Proportions with ", result$cred_level,
+    cat("Estimated Proportions with ", x$cred_level,
         "% Credible Interval using a Dirichlet(", 
-        paste(result$prior$alpha, collapse =","), 
+        paste(x$prior$alpha, collapse =","), 
         ") prior\n\n", sep="") 
     
-    print(signif(result$estimates, result$signif_value))
+    print(signif(x$estimates, x$signif_value))
     
   } else {
     
     cat("Prior\n")
     
-    print(noquote(result$prior_param))
+    print(noquote(x$prior_param))
     
     cat("\n\nEstimated Proportions\n\n")
     
-    print(signif(result$estimates, result$signif_value))
+    print(signif(x$estimates, x$signif_value))
     
-    cat("\n\n", result$cred_level, "% Credible Intervals\n\n", sep="")
+    cat("\n\n", x$cred_level, "% Credible Intervals\n\n", sep="")
     
-    print(signif(result$cred_interval, result$signif_value))
+    print(signif(x$cred_interval, x$signif_value))
     
   }
   
@@ -356,21 +356,21 @@ summary.inz_dNIG <- function(object, ...) {
 
 
 #' @exportS3Method
-print.summary.inz_dNIG <- function(result, ...) {
+print.summary.inz_dNIG <- function(x, ...) {
   
-  group <- result$group 
+  group <- x$group 
   
   if (length(group)==1) {
-    cat("Mean with ", result$cred_level, 
+    cat("Mean with ", x$cred_level, 
         "% Credible Interval\n\n", sep="")
     
-    print(signif(result$estimate, result$signif_value))
+    print(signif(x$estimate, x$signif_value))
     
   } else {
-    cat("Group Means with ", result$cred_level, 
+    cat("Group Means with ", x$cred_level, 
         "% Credible Intervals\n\n", sep="")
     
-    print(signif(result$estimate, result$signif_value))
+    print(signif(x$estimate, x$signif_value))
   }
   
 }
@@ -428,12 +428,12 @@ summary.inz_dNIG_reg <- function(object, ...) {
 
 
 #' @exportS3Method
-print.summary.inz_dNIG_reg <- function(result, ...) {
+print.summary.inz_dNIG_reg <- function(x, ...) {
   
-  cat("Linear Trend Coefficients with ", result$cred_level, 
+  cat("Linear Trend Coefficients with ", x$cred_level, 
       "% Credible Intervals\n\n", sep="")
   
-  print(signif(result$estimate, result$signif_value))
+  print(signif(x$estimate, x$signif_value))
   
 }
 
