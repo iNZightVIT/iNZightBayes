@@ -1,13 +1,16 @@
 Package: iNZightBayes
 Title: Bayesian Inference with 'iNZight'
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: c(
     person(given = "Tom", family = "Elliott", role = c("aut", "cre"),
         email = "tom.elliott@auckland.ac.nz", comment = c(ORCID = "0000-0002-7815-6318")),
     person(given = "Matt", family = "Edwards", role = "aut",
-        email = "matt.edwards@auckland.ac.nz", comment = c(ORCID = ""))
+        email = "matt.edwards@auckland.ac.nz", comment = c(ORCID = "")),
+    person(given = "Erena", family = "Tanabe", role = "aut")
     )
 Description: Provides functions for fitting a finite set of Bayesian models, for use by the 'iNZightPlots' package.
+URL: https://bayes.inzight.nz
+BugReports: https://github.com/iNZightVIT/iNZightBayes/issues
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
@@ -22,7 +25,6 @@ Imports:
     ggplot2,
     patchwork,
     Rcpp,
-    rlang,
     stats,
     tidybayes,
     MASS

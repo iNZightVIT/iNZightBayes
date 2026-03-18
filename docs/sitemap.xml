@@ -1,42 +1,30 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://inzightvit.github.io/iNZightBayes/index.html</loc>
-  </url>
-  <url>
-    <loc>https://inzightvit.github.io/iNZightBayes/reference/calc.html</loc>
-  </url>
-  <url>
-    <loc>https://inzightvit.github.io/iNZightBayes/reference/estimate_lm.html</loc>
-  </url>
-  <url>
-    <loc>https://inzightvit.github.io/iNZightBayes/reference/estimate_mean.html</loc>
-  </url>
-  <url>
-    <loc>https://inzightvit.github.io/iNZightBayes/reference/estimate_proportions.html</loc>
-  </url>
-  <url>
-    <loc>https://inzightvit.github.io/iNZightBayes/reference/gibbs_anova.html</loc>
-  </url>
-  <url>
-    <loc>https://inzightvit.github.io/iNZightBayes/reference/gibbs_lm.html</loc>
-  </url>
-  <url>
-    <loc>https://inzightvit.github.io/iNZightBayes/reference/gibbs_lm_R.html</loc>
-  </url>
-  <url>
-    <loc>https://inzightvit.github.io/iNZightBayes/reference/gibbs_mean.html</loc>
-  </url>
-  <url>
-    <loc>https://inzightvit.github.io/iNZightBayes/reference/iNZightBayes.html</loc>
-  </url>
-  <url>
-    <loc>https://inzightvit.github.io/iNZightBayes/reference/inzposterior.html</loc>
-  </url>
-  <url>
-    <loc>https://inzightvit.github.io/iNZightBayes/reference/rdirichlet.html</loc>
-  </url>
-  <url>
-    <loc>https://inzightvit.github.io/iNZightBayes/articles/estimation_methods.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://bayes.inzight.nz/404.html</loc></url>
+<url><loc>https://bayes.inzight.nz/LICENSE.html</loc></url>
+<url><loc>https://bayes.inzight.nz/articles/conjugate_priors.html</loc></url>
+<url><loc>https://bayes.inzight.nz/articles/estimation_methods.html</loc></url>
+<url><loc>https://bayes.inzight.nz/articles/index.html</loc></url>
+<url><loc>https://bayes.inzight.nz/authors.html</loc></url>
+<url><loc>https://bayes.inzight.nz/index.html</loc></url>
+<url><loc>https://bayes.inzight.nz/reference/calc.html</loc></url>
+<url><loc>https://bayes.inzight.nz/reference/calculate_posterior.html</loc></url>
+<url><loc>https://bayes.inzight.nz/reference/estimate_lm.html</loc></url>
+<url><loc>https://bayes.inzight.nz/reference/estimate_mean.html</loc></url>
+<url><loc>https://bayes.inzight.nz/reference/estimate_proportions.html</loc></url>
+<url><loc>https://bayes.inzight.nz/reference/gibbs_anova.html</loc></url>
+<url><loc>https://bayes.inzight.nz/reference/gibbs_lm.html</loc></url>
+<url><loc>https://bayes.inzight.nz/reference/gibbs_lm_R.html</loc></url>
+<url><loc>https://bayes.inzight.nz/reference/gibbs_mean.html</loc></url>
+<url><loc>https://bayes.inzight.nz/reference/iNZightBayes.html</loc></url>
+<url><loc>https://bayes.inzight.nz/reference/index.html</loc></url>
+<url><loc>https://bayes.inzight.nz/reference/inz_dNIG.html</loc></url>
+<url><loc>https://bayes.inzight.nz/reference/inz_dbeta.html</loc></url>
+<url><loc>https://bayes.inzight.nz/reference/inz_ddir.html</loc></url>
+<url><loc>https://bayes.inzight.nz/reference/inz_lbinom.html</loc></url>
+<url><loc>https://bayes.inzight.nz/reference/inz_lmulti.html</loc></url>
+<url><loc>https://bayes.inzight.nz/reference/inz_lnorm.html</loc></url>
+<url><loc>https://bayes.inzight.nz/reference/inzposterior.html</loc></url>
+<url><loc>https://bayes.inzight.nz/reference/posterior_summary.html</loc></url>
+<url><loc>https://bayes.inzight.nz/reference/rdirichlet.html</loc></url>
 </urlset>
+
